@@ -15,23 +15,29 @@ const getSelectedText = async () => {
       },
       (injectionResults) => {
         if (injectionResults && injectionResults.length > 0) {
-          textContainer.value =
-            injectionResults[0].result || 'No text selected.'
+          const prompt =
+            injectionResults[0].result || 'Виділіть питання на сторінці'
+          textContainer.value = prompt
         } else {
-          textContainer.value = 'No text selected.'
+          textContainer.value = 'Питання не виділено'
         }
       }
     )
   } catch (error) {
     console.error('Error executing script:', error)
-    textContainer.value = 'An error occurred.'
+    textContainer.value = 'Щось пішло не так...'
   }
 }
 </script>
 
 <template>
-  <div class="w-[300px]">
+  <div class="w-[400px] p-2 bg-fiord-900 text-white flex flex-col gap-2">
     <Button @click="getSelectedText">Пошук</Button>
-    <div id="text-container">{{ textContainer }}</div>
+    <div
+      id="text-container"
+      class="p-1 bg-fiord-800 border border-fiord-700 rounded-lg"
+    >
+      {{ textContainer }}
+    </div>
   </div>
 </template>

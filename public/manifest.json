@@ -19,11 +19,5 @@
     "192": "img/icon-192.png",
     "384": "img/icon-384.png",
     "512": "img/icon-512.png"
-  },
-  "web_accessible_resources": [
-    {
-      "resources": ["myscript.js"],
-      "matches": ["https://*/*"]
-    }
-  ]
+  }
 }

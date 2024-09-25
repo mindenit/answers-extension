@@ -11,6 +11,7 @@
   "dependencies": {
     "@mindenit/ui": "^0.1.8",
     "@vueuse/core": "^11.1.0",
+    "axios": "^1.7.7",
     "vue": "^3.4.37"
   },
   "devDependencies": {

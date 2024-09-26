@@ -1,5 +1,44 @@
-# Vue 3 + TypeScript + Vite
+# Mindenit Answers Extension
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+**Mindenit Answers Extension** is a browser extension designed to help you quickly find answers to questions stored on the Mindenit Answers platform.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Features
+
+- Quickly search for answers to selected questions on the Mindenit Answers site.
+- Simple and intuitive interface.
+- Fast search functionality with minimal effort.
+
+## Installation
+
+The extension is currently under development. Links to install the extension from browser stores will be provided soon.
+
+## Usage
+
+1. Select a question on the webpage.
+2. Click the extension icon in the browser toolbar.
+3. Click the "Пошук" (Search) button to find the answer on Mindenit Answers.
+
+## Development
+
+To modify or contribute to this extension, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/mindenit/answers-extension.git
+   ```
+2. Install dependencies using pnpm:
+   ```bash
+   pnpm i
+   ```
+3. Build the extension:
+   ```bash
+   pnpm build
+   ```
+
+## Contributing
+
+We welcome contributions! A detailed contribution guideline will be added later. Feel free to fork the repository and submit a pull request.
+
+## License
+
+This project is licensed under the GNU General Public License.

@@ -4,6 +4,8 @@ import { Icon } from '@iconify/vue'
 import { Text } from '@mindenit/ui'
 import VerifiedBadge from './VerifiedBadge.vue'
 
+const baseUrl = import.meta.env.VITE_BASE_URL
+
 interface Props {
   question: QuestionAttributes
   questionId: number
@@ -31,7 +33,7 @@ console.log(props.question)
     </div>
     <Text size="subtitle" v-if="props.question.test!.data !== null">
       <a
-        :href="`https://localhost:3000/test/${props.question.test!.data.id}`"
+        :href="`${baseUrl}/test/${props.question.test!.data.id}`"
         target="_blank"
         >Тест: {{ props.question.test!.data.attributes.name }}</a
       >

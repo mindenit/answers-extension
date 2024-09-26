@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ErrorCard from '@/components/ErrorCard.vue'
 import Logo from '@/components/Logo.vue'
 import QuestionCard from '@/components/QuestionCard.vue'
 import { Question } from '@/types'
@@ -6,7 +7,8 @@ import { Button } from '@mindenit/ui'
 import { computed, ref } from 'vue'
 import { fetchQuestions } from './services/questionService'
 
-const result = ref<Question[] | string>('')
+const resultQuestions = ref<Question[]>([])
+const errorMessage = ref<string>('')
 
 const getSelectedText = async (): Promise<string> => {
   try {
@@ -24,24 +26,25 @@ const getSelectedText = async (): Promise<string> => {
 
 const findAnswer = async (): Promise<void> => {
   try {
+    errorMessage.value = ''
     const selectedText = await getSelectedText()
     if (selectedText) {
-      result.value = await fetchQuestions(selectedText)
+      const response = await fetchQuestions(selectedText)
+      if (Array.isArray(response)) {
+        resultQuestions.value = response
+      } else {
+        errorMessage.value = 'Некоректна відповідь сервера'
+      }
     } else {
-      result.value = 'Питання не виділено'
+      errorMessage.value = 'Питання не виділено'
     }
   } catch (error) {
     console.error('Помилка при пошуку відповіді:', error)
+    errorMessage.value = 'Помилка при пошуку відповіді'
   }
 }
 
-const isResultArray = computed(
-  () => Array.isArray(result.value) && result.value.length
-)
-
-const resultQuestions = computed(() =>
-  isResultArray.value ? (result.value as Question[]) : []
-)
+const hasResults = computed(() => resultQuestions.value.length > 0)
 </script>
 
 <template>
@@ -59,8 +62,7 @@ const resultQuestions = computed(() =>
         >Mindenit Answers</Button
       >
     </div>
-
-    <template v-if="isResultArray">
+    <template v-if="hasResults">
       <QuestionCard
         v-for="question in resultQuestions"
         :key="question.id"
@@ -68,12 +70,10 @@ const resultQuestions = computed(() =>
         :question="question.attributes"
       />
     </template>
-    <template v-else>
-      <div
-        class="bg-fiord-900 w-full h-fit p-3 rounded-xl border border-fiord-700 text-base"
-      >
-        {{ result }}
-      </div>
+    <template v-else-if="errorMessage">
+      <ErrorCard>
+        {{ errorMessage }}
+      </ErrorCard>
     </template>
   </div>
 </template>

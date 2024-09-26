@@ -1,49 +1,47 @@
 <script setup lang="ts">
 import Logo from '@/components/Logo.vue'
-import { Button, Heading, Text } from '@mindenit/ui'
-import { ref } from 'vue'
+import QuestionCard from '@/components/QuestionCard.vue'
+import { Question } from '@/types'
+import { Button } from '@mindenit/ui'
+import { computed, ref } from 'vue'
+import { fetchQuestions } from './services/questionService'
 
-const result = ref<any>('')
+const result = ref<Question[] | string>('')
 
-const fetchAnswer = async (selectedText: string) => {
-  try {
-    const response = await fetch(
-      `http://localhost:1337/api/questions?populate=test&filters[name][$contains]=${encodeURIComponent(selectedText)}`
-    )
-    const data = await response.json()
-    result.value = data.data?.length ? data.data : 'Відповідь не знайдена'
-  } catch (error) {
-    console.error('Помилка при запиті до API:', error)
-    result.value = 'Щось пішло не так...'
-  }
-}
-
-const getSelectedText = async () => {
+const getSelectedText = async (): Promise<string> => {
   try {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
-
     const injectionResults = await chrome.scripting.executeScript({
       target: { tabId: tab.id! },
-      func: () => window.getSelection()?.toString().trim().toLowerCase()
+      func: () => window.getSelection()?.toString().trim()
     })
-
     return injectionResults?.[0]?.result || ''
   } catch (error) {
-    console.error('Помилка при виконанні скрипта:', error)
-    result.value = 'Щось пішло не так...'
+    console.error('Помилка при виконанні скріпта:', error)
     return ''
   }
 }
 
-const findAnswer = async () => {
-  const selectedText = await getSelectedText()
-
-  if (selectedText) {
-    await fetchAnswer(selectedText)
-  } else {
-    result.value = 'Питання не виділено'
+const findAnswer = async (): Promise<void> => {
+  try {
+    const selectedText = await getSelectedText()
+    if (selectedText) {
+      result.value = await fetchQuestions(selectedText)
+    } else {
+      result.value = 'Питання не виділено'
+    }
+  } catch (error) {
+    console.error('Помилка при пошуку відповіді:', error)
   }
 }
+
+const isResultArray = computed(
+  () => Array.isArray(result.value) && result.value.length
+)
+
+const resultQuestions = computed(() =>
+  isResultArray.value ? (result.value as Question[]) : []
+)
 </script>
 
 <template>
@@ -61,24 +59,18 @@ const findAnswer = async () => {
         >Mindenit Answers</Button
       >
     </div>
-    <template v-if="Array.isArray(result) && result.length">
-      <div
-        class="w-full p-1 bg-fiord-800 border border-fiord-700 rounded-lg text-base flex flex-col gap-1"
-        v-for="data in result"
-      >
-        <Heading size="small" class="text-white">{{
-          data.attributes.name
-        }}</Heading>
-        <Text size="paragraph">{{ data.attributes.answer }}</Text>
-        <hr />
-        <Text size="subtitle"
-          >Тест: {{ data.attributes.test.data.attributes.name }}</Text
-        >
-      </div>
+
+    <template v-if="isResultArray">
+      <QuestionCard
+        v-for="question in resultQuestions"
+        :key="question.id"
+        :questionId="question.id"
+        :question="question.attributes"
+      />
     </template>
     <template v-else>
       <div
-        class="w-full p-1 bg-fiord-800 border border-fiord-700 rounded-lg text-base"
+        class="bg-fiord-900 w-full h-fit p-3 rounded-xl border border-fiord-700 text-base"
       >
         {{ result }}
       </div>

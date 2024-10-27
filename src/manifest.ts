@@ -13,6 +13,7 @@ export default defineManifest({
     16: 'img/logo-16.png',
     32: 'img/logo-34.png',
     48: 'img/logo-48.png',
+    72: 'img/icon-72.png',
     128: 'img/logo-128.png',
   },
   action: {
@@ -28,7 +29,7 @@ export default defineManifest({
   content_scripts: [
     {
       matches: ['http://*/*', 'https://*/*'],
-      js: ['src/contentScript/index.ts'],
+      js: ['src/contentScript/index.tsx'],
     },
   ],
   side_panel: {
@@ -36,7 +37,7 @@ export default defineManifest({
   },
   web_accessible_resources: [
     {
-      resources: ['img/logo-16.png', 'img/logo-34.png', 'img/logo-48.png', 'img/logo-128.png'],
+      resources: ['img/logo-16.png', 'img/logo-34.png', 'img/logo-48.png', 'img/icon-72.png', 'img/logo-128.png'],
       matches: [],
     },
   ],

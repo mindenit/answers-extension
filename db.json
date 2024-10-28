@@ -1,0 +1,46 @@
+{
+    "questions": [
+      {
+        "id": 1,
+        "createdAt": "2024-10-27T10:00:00Z",
+        "updatedAt": "2024-10-27T10:30:00Z",
+        "name": "What is the capital of France?",
+        "answer": "Paris",
+        "isVerified": true,
+        "testId": 1
+      },
+      {
+        "id": 2,
+        "createdAt": "2024-10-27T11:00:00Z",
+        "updatedAt": "2024-10-27T11:30:00Z",
+        "name": "What is 2 + 2?",
+        "answer": "4",
+        "isVerified": true,
+        "testId": 1
+      },
+      {
+        "id": 3,
+        "createdAt": "2024-10-27T12:00:00Z",
+        "updatedAt": "2024-10-27T12:30:00Z",
+        "name": "What is the color of the sky?",
+        "answer": "Blue",
+        "isVerified": false,
+        "testId": 2
+      },
+      {
+        "id": 4,
+        "createdAt": "2024-10-27T12:00:00Z",
+        "updatedAt": "2024-10-27T12:30:00Z",
+        "name": "Якиій фізичній величині відповідає наступна формула?",
+        "answer": "Потужність",
+        "isVerified": false,
+        "testId": 2
+      }
+    ],
+    "rain": [
+      {
+        "id": 1,
+        "name": "What is 2 + 2?"
+      }
+    ]
+  }

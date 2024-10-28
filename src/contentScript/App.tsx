@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { TextSelectionOverlay } from './components/TextSelectionOverlay';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    mutations: {
+      retry: false,
+    },
+  },
+});
 
 export const App: React.FC = () => {
   const [logoUrl, setLogoUrl] = useState<string>('');
@@ -14,6 +23,8 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <TextSelectionOverlay iconLogoPath={logoUrl} />
+    <QueryClientProvider client={queryClient}>
+      <TextSelectionOverlay iconLogoPath={logoUrl} />
+    </QueryClientProvider>
   );
 };

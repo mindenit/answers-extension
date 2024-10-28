@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 export namespace ApiQuestions {
-  const link = `${Links.api}/questions`;
+  const link = `https://answers.mindenit.org/api/questions`;
 
   export interface IResponse {
     id: number;

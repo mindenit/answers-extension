@@ -1,10 +1,8 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { SelectionIcon } from './SelectionIcon';
 import { Modal } from './Modal';
 import { useTextSelection } from '../hooks/useTextSelection';
-import { useClickOutside } from '../hooks/useClickOutside';
-import { IExtensionMessage } from '../types/types';
 import { ApiQuestions } from '../requests/Questions';
 
 interface TextSelectionOverlayProps {
@@ -27,8 +25,10 @@ export const TextSelectionOverlay: React.FC<TextSelectionOverlayProps> = ({ icon
 
   const { data: allQuestions, isLoading, error } = useQuery({
     queryKey: ['questions'],
-    queryFn: ApiQuestions.get
+    queryFn: ApiQuestions.get,
+    staleTime: Infinity,
   });
+
   
   const questionMutation = useMutation({
     mutationFn: async (text: string) => {
@@ -39,6 +39,8 @@ export const TextSelectionOverlay: React.FC<TextSelectionOverlayProps> = ({ icon
             questions: allQuestions,
             pattern: text
           });
+
+          console.log(response.questions)
           return response.questions;
       }
       return [];
@@ -56,7 +58,7 @@ export const TextSelectionOverlay: React.FC<TextSelectionOverlayProps> = ({ icon
             createdAt: new Date(),
             updatedAt: new Date(),
             name: selectedText,
-            answer: 'not found',
+            answer: 'Відповідь не знайдено😕',
             isVerified: false,
             testId: 0
           }

@@ -22,6 +22,18 @@ export const TextSelectionOverlay: React.FC<TextSelectionOverlayProps> = ({ icon
     setQuestions([]);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        handleClose();
+      }
+    };
+  
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [handleClose]);
 
   const { data: allQuestions, isLoading, error } = useQuery({
     queryKey: ['questions'],

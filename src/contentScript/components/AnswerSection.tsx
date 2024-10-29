@@ -4,6 +4,7 @@ import { CheckCircleIcon } from './CheckCircleIcon';
 import { InlineMath, BlockMath } from 'react-katex';
 
 interface AnswerSectionProps {
+  isVerified: boolean;
   answer: string;
 }
 

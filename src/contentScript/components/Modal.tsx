@@ -6,6 +6,7 @@ import { AnswerSection } from './AnswerSection';
 import { IdSection } from './IdSection';
 
 interface ModalProps {
+  isVerified: boolean,
   title: string;
   answer: string;
   id: number;
@@ -36,6 +37,7 @@ const ModalContainer = styled.div<{ x: number; y: number }>`
 `;
 
 export const Modal: React.FC<ModalProps> = ({
+  isVerified,
   title,
   answer,
   id,
@@ -47,7 +49,7 @@ export const Modal: React.FC<ModalProps> = ({
     <ModalContainer x={x} y={y}>
       <ModalTitle title={title} />
       <CloseButton onClose={onClose} />
-      <AnswerSection answer={answer} />
+      <AnswerSection answer={answer} isVerified={isVerified} />
       <IdSection id={id} />
     </ModalContainer>
   );

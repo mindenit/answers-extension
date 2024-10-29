@@ -8,6 +8,7 @@ export default defineManifest({
   name: `${packageData.displayName || packageData.name}${isDev ? ` ➡️ Dev` : ''}`,
   description: packageData.description,
   version: packageData.version,
+  version_name: "0.0.1b3",
   manifest_version: 3,
   icons: {
     16: 'img/logo-16.png',
@@ -28,7 +29,10 @@ export default defineManifest({
   },
   content_scripts: [
     {
-      matches: ['http://*/*', 'https://*/*'],
+      matches: [
+        "*://*.dl.nure.ua/*",
+        "*://*.answers.mindenit.org/*"
+      ],
       js: ['src/contentScript/index.tsx'],
     },
   ],
@@ -38,7 +42,10 @@ export default defineManifest({
   web_accessible_resources: [
     {
       resources: ['img/logo-16.png', 'img/logo-34.png', 'img/logo-48.png', 'img/icon-72.png', 'img/logo-128.png'],
-      matches: [],
+      matches: [
+        "*://*.dl.nure.ua/*",
+        "*://*.answers.mindenit.org/*"
+      ],
     },
   ],
   permissions: ['sidePanel', 'storage'],

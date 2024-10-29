@@ -26,21 +26,35 @@ export const TextSelectionOverlay: React.FC<TextSelectionOverlayProps> = ({ icon
   const { data: allQuestions, isLoading, error } = useQuery({
     queryKey: ['questions'],
     queryFn: ApiQuestions.get,
-    staleTime: Infinity,
+    staleTime: Infinity
   });
 
   
   const questionMutation = useMutation({
     mutationFn: async (text: string) => {
       if (chrome?.runtime?.sendMessage && allQuestions) {
-          console.log(allQuestions)
           const response = await chrome.runtime.sendMessage({
             type: 'FIND_QUESTIONS',
             questions: allQuestions,
             pattern: text
           });
 
-          console.log(response.questions)
+          if(response.type === "NOT FOUND") {
+            console.log("NOT FOUND")
+
+            return [
+              {
+                id: null,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+                name: selectedText,
+                answer: 'Відповідь не знайдено😕',
+                isVerified: false,
+                testId: 0
+              }
+            ]
+          }
+
           return response.questions;
       }
       return [];

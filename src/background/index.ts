@@ -25,7 +25,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     if(foundQuestions.length === 0) {
       console.log(foundQuestions)
-      sendResponse({ type: "ERROR", message: "Питання не знайдено.", questions: foundQuestions });
+      sendResponse({ type: "NOT FOUND", message: "Питання не знайдено.", questions: foundQuestions });
       return true;
     }
     console.log(foundQuestions)

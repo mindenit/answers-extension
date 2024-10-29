@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CheckCircleIcon } from './CheckCircleIcon';
-import { InlineMath, BlockMath } from 'react-katex';
+import { renderMathContent } from '../utils/utils';
 
 interface AnswerSectionProps {
   isVerified: boolean;
@@ -26,21 +26,7 @@ const ContentWrapper = styled.div`
 `;
 
 // Helper function to render math content
-const renderMathContent = (text: string) => {
-  if (!text.includes('$$')) {
-    return <span>{text}</span>;
-  }
 
-  const parts = text.split(/(\$\$.*?\$\$)/g);
-  
-  return parts.map((part, index) => {
-    if (part.startsWith('$$') && part.endsWith('$$')) {
-      const formula = part.slice(2, -2);
-      return <BlockMath key={index}>{formula}</BlockMath>;
-    }
-    return <span key={index}>{part}</span>;
-  });
-};
 
 export const AnswerSection: React.FC<AnswerSectionProps> = ({ answer, isVerified }) => {
   return (

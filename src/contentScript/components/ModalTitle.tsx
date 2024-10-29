@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { renderMathContent } from '../utils/utils';
 
 interface ModalTitleProps {
   title: string;
@@ -13,5 +14,5 @@ const Title = styled.h2`
 `;
 
 export const ModalTitle: React.FC<ModalTitleProps> = ({ title }) => {
-  return <Title>{title}</Title>;
+  return <Title>{renderMathContent(title)}</Title>;
 };

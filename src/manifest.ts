@@ -35,7 +35,6 @@ export default defineManifest({
       resources: ['img/icon-72.png'],
       matches: [
         "*://*.dl.nure.ua/*",
-        "*://*.answers.mindenit.org/*"
       ],
     },
   ],

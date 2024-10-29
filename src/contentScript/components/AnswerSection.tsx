@@ -42,11 +42,15 @@ const renderMathContent = (text: string) => {
   });
 };
 
-export const AnswerSection: React.FC<AnswerSectionProps> = ({ answer }) => {
+export const AnswerSection: React.FC<AnswerSectionProps> = ({ answer, isVerified }) => {
   return (
     <Container>
       <ContentWrapper>
-        <CheckCircleIcon />
+        {
+          isVerified 
+           ? <CheckCircleIcon />
+           : null
+        }
         {renderMathContent(answer)}
       </ContentWrapper>
     </Container>

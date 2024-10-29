@@ -117,6 +117,7 @@ export const TextSelectionOverlay: React.FC<TextSelectionOverlayProps> = ({ icon
       {isModalOpen && questions.length > 0 && (
         <div ref={modalRef}>
           <Modal
+            isVerified={questions[0].isVerified}
             title={questions[0].name}
             answer={questions[0].answer}
             id={questions[0].id}

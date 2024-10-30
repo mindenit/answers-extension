@@ -25,7 +25,6 @@ export default defineManifest({
     {
       matches: [
         "*://*.dl.nure.ua/*",
-        "*://*.answers.mindenit.org/*"
       ],
       js: ['src/contentScript/index.tsx'],
     },

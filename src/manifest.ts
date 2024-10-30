@@ -8,7 +8,7 @@ export default defineManifest({
   name: `${packageData.displayName || packageData.name}${isDev ? ` ➡️ Dev` : ''}`,
   description: packageData.description,
   version: packageData.version,
-  version_name: "0.0.1b5",
+  version_name: "0.0.1b7",
   manifest_version: 3,
   icons: {
     72: 'img/icon-72.png',

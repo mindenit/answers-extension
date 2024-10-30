@@ -9,7 +9,7 @@ export const useTextSelection = () => {
     const selection = window.getSelection();
     const text = selection?.toString().trim();
     
-    if (text && text.length > 0) {
+    if (text && text.length > 4) {
       setSelectedText(text);
       
       const range = selection?.getRangeAt(0);

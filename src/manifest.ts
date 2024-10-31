@@ -1,14 +1,13 @@
 import { defineManifest } from '@crxjs/vite-plugin'
 import packageData from '../package.json'
 
-//@ts-ignore
-const isDev = process.env.NODE_ENV == 'development'
+const isDev = process.env.NODE_ENV === 'development'
 
 export default defineManifest({
-  name: `${packageData.displayName || packageData.name}${isDev ? ` ➡️ Dev` : ''}`,
+  name: `${packageData.displayName || packageData.name}${isDev ? ' Dev' : ''}`,
   description: packageData.description,
   version: packageData.version,
-  version_name: "0.0.1b7",
+  version_name: '0.0.1b7',
   manifest_version: 3,
   icons: {
     72: 'img/icon-72.png',
@@ -23,19 +22,18 @@ export default defineManifest({
   },
   content_scripts: [
     {
-      matches: [
-        "*://*.dl.nure.ua/*",
-      ],
+      matches: ['*://*.dl.nure.ua/*'],
       js: ['src/contentScript/index.tsx'],
     },
   ],
   web_accessible_resources: [
     {
       resources: ['img/icon-72.png', 'installation.html'],
-      matches: [
-        "*://*.dl.nure.ua/*",
-      ],
+      matches: ['*://*.dl.nure.ua/*'],
     },
   ],
-  permissions: ['sidePanel', 'storage', 'tabs']
+  permissions: ['sidePanel', 'storage', 'tabs'],
+  content_security_policy: {
+    extension_pages: "script-src 'self'; object-src 'self'",
+  },
 })

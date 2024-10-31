@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import HomeIcon from './component/HomeIcon';
+import React from 'react'
+import styled from 'styled-components'
+import HomeIcon from './component/HomeIcon'
 
 const PopupContainer = styled.div`
   padding: 1rem;
@@ -70,10 +70,10 @@ const PopupContainer = styled.div`
       background-color: rgba(226, 230, 234, 0.5);
     }
   }
-`;
+`
 
 export const Popup = () => {
-  const link = 'https://answers.mindenit.org';
+  const link = 'https://answers.mindenit.org'
 
   return (
     <PopupContainer>
@@ -86,23 +86,38 @@ export const Popup = () => {
       <ul>
         <h3>Якщо маєте змогу нас підтримати, то будемо раді будь яким пожертвуванням😉</h3>
         <li>
-          <a href="https://t.me/mindenit_support" className="button-link" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://t.me/mindenit_support"
+            className="button-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Чат підтримки в телеграм 📨
           </a>
         </li>
         <li>
-          <a href="https://send.monobank.ua/jar/2hMH9Gr7Dn" className="button-link" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://send.monobank.ua/jar/2hMH9Gr7Dn"
+            className="button-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Монобанка 🐈
           </a>
         </li>
         <li>
-          <a href="https://base.monobank.ua/DHfiSksgyjSYDT" className="button-link" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://base.monobank.ua/DHfiSksgyjSYDT"
+            className="button-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Монобаза 💵
           </a>
         </li>
       </ul>
     </PopupContainer>
-  );
-};
+  )
+}
 
-export default Popup;
+export default Popup

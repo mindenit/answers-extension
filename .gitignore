@@ -8,6 +8,8 @@
 
 # production
 /build
+/build-chrome
+/build-firefox
 /package
 
 # misc

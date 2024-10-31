@@ -1,18 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
-import { CloseButton } from './CloseButton';
-import { ModalTitle } from './ModalTitle';
-import { AnswerSection } from './AnswerSection';
-import { IdSection } from './IdSection';
+import React from 'react'
+import styled from 'styled-components'
+import { CloseButton } from './CloseButton'
+import { ModalTitle } from './ModalTitle'
+import { AnswerSection } from './AnswerSection'
+import { IdSection } from './IdSection'
 
 interface ModalProps {
-  isVerified: boolean,
-  title: string;
-  answer: string;
-  id: number;
-  x: number;
-  y: number;
-  onClose: () => void;
+  isVerified: boolean
+  title: string
+  answer: string
+  id: number
+  x: number
+  y: number
+  onClose: () => void
 }
 
 const ModalContainer = styled.div<{ x: number; y: number }>`
@@ -27,24 +27,16 @@ const ModalContainer = styled.div<{ x: number; y: number }>`
   display: grid;
   gap: 0.625rem; /* 2.5 in Tailwind spacing scale */
   grid-template-columns: 1fr auto;
-  grid-template-areas: 
+  grid-template-areas:
     'title close'
     'question question'
     'answer answer'
     'id id';
   top: ${({ y }) => `${y}px`};
   left: ${({ x }) => `${x}px`};
-`;
+`
 
-export const Modal: React.FC<ModalProps> = ({
-  isVerified,
-  title,
-  answer,
-  id,
-  x,
-  y,
-  onClose,
-}) => {
+export const Modal: React.FC<ModalProps> = ({ isVerified, title, answer, id, x, y, onClose }) => {
   return (
     <ModalContainer x={x} y={y}>
       <ModalTitle title={title} />
@@ -52,5 +44,5 @@ export const Modal: React.FC<ModalProps> = ({
       <AnswerSection answer={answer} isVerified={isVerified} />
       <IdSection id={id} />
     </ModalContainer>
-  );
-};
+  )
+}

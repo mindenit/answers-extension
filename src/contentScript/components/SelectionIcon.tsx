@@ -1,11 +1,11 @@
-import React, { forwardRef } from 'react';
-import styled from 'styled-components';
-import { SelectionPosition } from '../types/types';
+import React, { forwardRef } from 'react'
+import styled from 'styled-components'
+import { SelectionPosition } from '../types/types'
 
 interface SelectionIconProps {
-  iconLogoPath: string;
-  position: SelectionPosition;
-  onIconClick: (e: React.MouseEvent) => void;
+  iconLogoPath: string
+  position: SelectionPosition
+  onIconClick: (e: React.MouseEvent) => void
 }
 
 const IconContainer = styled.div<{ position: SelectionPosition }>`
@@ -27,14 +27,14 @@ const IconContainer = styled.div<{ position: SelectionPosition }>`
   &:hover {
     transform: scale(1.1);
   }
-`;
+`
 
 const IconImage = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: fill;
-`;
+`
 
 export const SelectionIcon = forwardRef<HTMLDivElement, SelectionIconProps>(
   ({ iconLogoPath, position, onIconClick }, ref) => {
@@ -42,6 +42,6 @@ export const SelectionIcon = forwardRef<HTMLDivElement, SelectionIconProps>(
       <IconContainer ref={ref} position={position} onClick={onIconClick}>
         <IconImage src={iconLogoPath} alt="Selection Icon" />
       </IconContainer>
-    );
-  }
-);
+    )
+  },
+)

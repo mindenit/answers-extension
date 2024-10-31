@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react'
+import styled from 'styled-components'
 
 const Wrapper = styled.div`
   position: relative;
@@ -9,13 +9,13 @@ const Wrapper = styled.div`
     opacity: 1;
     visibility: visible;
   }
-`;
+`
 
 const Icon = styled.svg`
   width: 16px;
   height: 16px;
-  fill: #92C353;
-`;
+  fill: #92c353;
+`
 
 const Tooltip = styled.div`
   display: inline-block;
@@ -37,8 +37,10 @@ const Tooltip = styled.div`
   top: 3.5rem;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
-`;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+`
 
 export const CheckCircleIcon: React.FC = () => {
   return (
@@ -48,5 +50,5 @@ export const CheckCircleIcon: React.FC = () => {
       </Icon>
       <Tooltip className="tooltip">Верифіковано</Tooltip>
     </Wrapper>
-  );
-};
+  )
+}

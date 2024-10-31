@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const ModalContainer = styled.div<{ x: number; y: number }>`
   position: absolute;
@@ -12,21 +12,21 @@ export const ModalContainer = styled.div<{ x: number; y: number }>`
   width: 500px;
   z-index: 9999;
   display: grid;
-  grid-template-areas: 
-    "title close"
-    "question question"
-    "answer answer"
-    "id id";
+  grid-template-areas:
+    'title close'
+    'question question'
+    'answer answer'
+    'id id';
   grid-template-columns: 1fr auto;
   gap: 10px;
-`;
+`
 
 export const ModalTitle = styled.h2`
   grid-area: title;
   margin: 0;
   font-size: 18px;
   color: ${({ theme }) => theme.colors.text.primary};
-`;
+`
 
 export const CloseButton = styled.button`
   grid-area: close;
@@ -49,7 +49,7 @@ export const CloseButton = styled.button`
   &:hover {
     transform: rotate(90deg);
   }
-`;
+`
 
 export const AnswerContainer = styled.div`
   grid-area: answer;
@@ -59,7 +59,7 @@ export const AnswerContainer = styled.div`
   border-radius: 4px;
   color: ${({ theme }) => theme.colors.text.primary};
   font-size: 14px;
-`;
+`
 
 export const IdSection = styled.div`
   grid-area: id;
@@ -67,4 +67,4 @@ export const IdSection = styled.div`
   font-size: 14px;
   text-align: right;
   margin-top: 5px;
-`;
+`

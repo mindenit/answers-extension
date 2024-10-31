@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 interface CloseButtonProps {
-  onClose: () => void;
+  onClose: () => void
 }
 
 const StyledButton = styled.button`
@@ -25,8 +25,8 @@ const StyledButton = styled.button`
   &:hover {
     transform: rotate(90deg);
   }
-`;
+`
 
 export const CloseButton: React.FC<CloseButtonProps> = ({ onClose }) => {
-  return <StyledButton onClick={onClose}>✕</StyledButton>;
-};
+  return <StyledButton onClick={onClose}>✕</StyledButton>
+}

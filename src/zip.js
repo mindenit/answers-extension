@@ -3,7 +3,6 @@ import gulp from 'gulp'
 import zip from 'gulp-zip'
 import { createRequire } from 'module'
 import fs from 'fs/promises'
-import path from 'path'
 
 const require = createRequire(import.meta.url)
 

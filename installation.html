@@ -20,7 +20,7 @@
         background: linear-gradient(to right, #090f1f, #090f1f);
         padding: 1rem;
         font-family: Arial, sans-serif;
-        color: #333;
+        color: #fff;
       }
 
       .page-container {
@@ -30,9 +30,10 @@
       }
 
       .card {
-        background: white;
+        background: #090f1f;
         border-radius: 0.5rem;
-        box-shadow: 0 10px 15px 10px rgba(67, 133, 157, 0.5);
+        border: 1px solid #344050;
+        box-shadow:  0 4px 12px rgba(33, 150, 243, 0.2);
         padding: 2rem;
         max-width: 28rem;
         width: 100%;
@@ -47,27 +48,32 @@
 
       .icon-circle {
         background-color: #dcfce7;
-        border-radius: 9999px;
+        border-radius: 50%;
         padding: 0.75rem;
+        width: 4rem; /* Adjusted to enforce a circle */
+        height: 4rem; /* Same value to keep it circular */
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .icon-circle svg {
-        width: 3rem;
-        height: 3rem;
+        width: 2.5rem;
+        height: 2.5rem;
         color: #16a34a;
       }
 
       .title {
         font-size: 2rem;
         font-weight: bold;
-        color: #111827;
+        color: #fff;
         margin-bottom: 1rem;
       }
 
       .section-heading {
         font-size: 1.5rem;
         font-weight: 600;
-        color: #111827;
+        color: #fff;
         margin-top: 1.5rem;
         margin-bottom: 0.5rem;
       }
@@ -75,24 +81,28 @@
       .description, .instructions, .footer-text {
         font-size: 1.125rem;
         line-height: 1.6;
-        color: #4b5563;
+        color: #fff;
         margin-bottom: 1.5rem;
       }
 
       .instructions {
         font-size: 1.125rem;
         line-height: 1.6;
-        color: #374151;
+        color: #fff;
       }
 
       .footer {
         font-size: 1.125rem;
-        color: #374151;
+        color: #fff;
       }
       
       a {
         text-decoration: none;
-        color:rgba(67, 133, 157);
+        color:hsl(233, 91%, 74%);
+      }
+
+      a:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
@@ -101,7 +111,7 @@
       <div class="card">
         <div class="icon-container">
           <div class="icon-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
           </div>
@@ -115,7 +125,7 @@
         
         <h2 class="section-heading">Як користуватися</h2>
         <p class="instructions">
-          Достатньо зайти на <strong><a href="https://dl.nure.ua/">dl.nure.ua</a></strong>, виділити текст, і натиснути на іконку розширення 😉
+          Достатньо зайти на <strong><a href="https://dl.nure.ua/">dl.nure.ua</a></strong>, виділити текст, і натиснути на іконку розширення, що зв'явилась 😉
         </p>
       </div>
     </div>

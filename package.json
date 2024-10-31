@@ -20,10 +20,9 @@
     "preview": "vite preview",
     "fmt": "prettier --write '**/*.{tsx,ts,json,css,scss,md}'",
     "build:chrome": "tsc && vite build --outDir build-chrome",
-    "build:firefox": "tsc && vite build --outDir build-firefox && cpy manifest.firefox.json build-firefox --rename=manifest.json",
-    "zip:chrome": "npm run build:chrome && node src/zip.js",
-    "zip:firefox": "npm run build:firefox && node src/zip.js",
-    "zip:all": "npm run build:chrome && npm run build:firefox && node src/zip.js"
+    "build:firefox": "tsc && vite build --outDir build-firefox && node ./src/firefox.js",
+    "zip:chrome": "pnpm build:chrome && node src/zip.js",
+    "zip:firefox": "pnpm build:firefox && node src/zip.js"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.59.16",

@@ -31,11 +31,11 @@ export default defineManifest({
   ],
   web_accessible_resources: [
     {
-      resources: ['img/icon-72.png'],
+      resources: ['img/icon-72.png', 'installation.html'],
       matches: [
         "*://*.dl.nure.ua/*",
       ],
     },
   ],
-  permissions: ['sidePanel', 'storage'],
+  permissions: ['sidePanel', 'storage', 'tabs']
 })

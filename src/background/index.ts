@@ -2,6 +2,12 @@ import { ApiQuestions } from "../contentScript/requests/Questions"
 
 console.log('background is running')
 
+chrome.runtime.onInstalled.addListener((details) => {
+  if (details.reason === "install") {
+    chrome.tabs.create({ url: "installation.html" });
+  }
+});
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if(request.type === 'FIND_QUESTIONS') {
     const { 

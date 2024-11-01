@@ -41,7 +41,7 @@ fs.readFile(firefoxManifestPath, 'utf8', (err, data) => {
     manifest.browser_specific_settings = {
       gecko: {
         id: "mindenit-answers@mindenit.ua",
-        strict_min_version: "48.0",
+        strict_min_version: "58.0",
       },
     };
   }

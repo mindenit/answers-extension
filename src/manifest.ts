@@ -7,7 +7,7 @@ export default defineManifest({
   name: `${packageData.displayName || packageData.name}${isDev ? ' Dev' : ''}`,
   description: packageData.description,
   version: packageData.version,
-  version_name: '0.0.1b8',
+  version_name: '0.0.1b9',
   manifest_version: 3,
   icons: {
     72: 'img/icon-72.png',
@@ -23,7 +23,7 @@ export default defineManifest({
   content_scripts: [
     {
       matches: ['*://*.dl.nure.ua/*'],
-      js: ['src/contentScript/index.tsx'],
+      js: ['src/contentScript/index.tsx', 'src/styleContentScript/index.js'],
     },
   ],
   web_accessible_resources: [

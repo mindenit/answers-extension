@@ -6,11 +6,12 @@ interface ModalTitleProps {
   title: string
 }
 
-const Title = styled.h2`
+const Title = styled.h1`
   grid-area: title;
   margin: 0;
-  font-size: 1.125rem;
-  color: white;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: !#fff;
 `
 
 export const ModalTitle: React.FC<ModalTitleProps> = ({ title }) => {

@@ -6,7 +6,7 @@ export const renderMathContent = (text: string) => {
   }
 
   if (!text.includes('$$')) {
-    return <span>{text}</span>
+    return <span style={{color: "#fff"}}>{text}</span>
   }
 
   const parts = text.split(/(\$\$.*?\$\$)/g)

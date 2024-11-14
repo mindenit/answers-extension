@@ -1,7 +1,7 @@
 {
   "name": "answers-ext",
   "displayName": "Mindenit Answers",
-  "version": "1.38",
+  "version": "1.4",
   "author": "Me",
   "description": "",
   "type": "module",
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.0.0-beta.19",
-    "@types/chrome": "^0.0.246",
+    "@types/chrome": "^0.0.281",
     "@types/react": "^18.2.28",
     "@types/react-dom": "^18.2.13",
     "@types/react-katex": "^3.0.4",

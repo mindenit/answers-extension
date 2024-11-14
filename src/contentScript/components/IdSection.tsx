@@ -14,14 +14,14 @@ const Container = styled.div`
 `
 
 const StrongText = styled.strong`
+  color: #96a2b6;
   font-weight: bold;
 `
 
 export const IdSection: React.FC<IdSectionProps> = ({ id }) => {
   return (
     <Container>
-      <StrongText>ID Питання: </StrongText>
-      {id}
+      <StrongText>{`ID Питання: ${id}`}</StrongText>
     </Container>
   )
 }

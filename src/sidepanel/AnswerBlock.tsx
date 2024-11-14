@@ -8,6 +8,7 @@ import { VerifiedSection } from '../contentScript/components/VerifiedSection';
 const Block = styled.div`
     background: #111628;
     padding: 0.75rem;
+    border-radius: 0.75rem;
     max-width: 21rem;
     display: flex;
     flex-direction: column;
@@ -46,15 +47,27 @@ const VerifiedSectionStyled = styled(VerifiedSection)`
     border-radius: 999px;
 `;
 
-export const AnswerBlock = () => {
+interface IProps {
+    id: number,
+    title: string,
+    answer: string,
+    isVerified: boolean 
+}
+
+export const AnswerBlock:React.FC<IProps> = ({
+    id,
+    title,
+    answer,
+    isVerified
+}) => {
     return (
         <Block>
             <TopRow>
-                <IdSectionStyled id={1}/>
+                <IdSectionStyled id={id}/>
                 <VerifiedSectionStyled/>
             </TopRow>
-            <ModalTitleStyled title={'Knebel'} />
-            <AnswerSectionStyled answer={"Till"} isVerified={true} />
+            <ModalTitleStyled title={title} />
+            <AnswerSectionStyled answer={answer} isVerified={isVerified} />
         </Block>
     )
 }

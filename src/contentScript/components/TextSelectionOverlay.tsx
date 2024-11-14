@@ -71,6 +71,7 @@ export const TextSelectionOverlay: React.FC<TextSelectionOverlayProps> = ({ icon
         }
 
         if(response.questions.length > 1) {
+          chrome.storage.sync.set({ answers: response.questions })
           chrome.runtime.sendMessage({ type: 'OPEN_SIDEBAR' });
         }
 

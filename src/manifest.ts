@@ -23,7 +23,7 @@ export default defineManifest({
   content_scripts: [
     {
       matches: ['*://*.dl.nure.ua/*'],
-      js: ['src/contentScript/index.tsx'],
+      js: ['src/contentScript/index.tsx', 'src/styleContentScript/index.js'],
     },
   ],
   side_panel: {

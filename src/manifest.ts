@@ -26,13 +26,16 @@ export default defineManifest({
       js: ['src/contentScript/index.tsx', 'src/styleContentScript/index.js'],
     },
   ],
+  side_panel: {
+    default_path: 'sidepanel.html'
+  },
   web_accessible_resources: [
     {
       resources: ['img/icon-72.png', 'installation.html'],
       matches: ['*://*.dl.nure.ua/*'],
     },
   ],
-  permissions: ['sidePanel', 'storage'],
+  permissions: ['sidePanel', 'storage' ],
   content_security_policy: {
     extension_pages: "script-src 'self'; object-src 'self'",
   },

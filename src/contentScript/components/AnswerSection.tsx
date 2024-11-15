@@ -9,23 +9,19 @@ interface AnswerSectionProps {
 }
 
 const Container = styled.div`
-  grid-area: answer;
-  accent-color: #344050;
-  width: 100%;
-  padding: 0.625rem; /* 2.5 in Tailwind spacing scale */
+  padding: 0.625rem;
   background-color: #18260d;
-  border-radius: 0.375rem; /* Rounded corners */
-  font-size: 0.875rem; /* Text-sm */
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
   color: white;
 `
 
 const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* 2 in Tailwind spacing scale */
+  gap: 0.5rem; 
 `
 
-// Helper function to render math content
 
 export const AnswerSection: React.FC<AnswerSectionProps> = ({ answer, isVerified }) => {
   return (

@@ -20,18 +20,18 @@ export default defineManifest({
     service_worker: 'src/background/index.ts',
     type: 'module',
   },
-  side_panel: {
-    default_path: 'sidebar.html'
-  },
   content_scripts: [
     {
       matches: ['*://*.dl.nure.ua/*'],
       js: ['src/contentScript/index.tsx'],
     },
   ],
+  side_panel: {
+    default_path: 'sidepanel.html'
+  },
   web_accessible_resources: [
     {
-      resources: ['img/icon-72.png', 'installation.html', 'sidebar.html'],
+      resources: ['img/icon-72.png', 'installation.html'],
       matches: ['*://*.dl.nure.ua/*'],
     },
   ],

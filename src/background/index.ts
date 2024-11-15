@@ -17,7 +17,6 @@ chrome.runtime.onInstalled.addListener((details) => {
     chrome.tabs.create({ url: 'installation.html' });
   }
 });
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === 'FIND_QUESTIONS') {
     const {

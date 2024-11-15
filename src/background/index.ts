@@ -2,10 +2,6 @@ import { ApiQuestions } from '../contentScript/requests/Questions'
 
 console.log('background is running');
 
-chrome.sidePanel
-  .setPanelBehavior({ openPanelOnActionClick: true })
-  .catch((error) => console.error('SidePanel setup error:', error));
-
 let windowId: any = 0;
 
 chrome.windows.getCurrent((window) => {
@@ -21,6 +17,7 @@ chrome.runtime.onInstalled.addListener((details) => {
     chrome.tabs.create({ url: 'installation.html' });
   }
 });
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === 'FIND_QUESTIONS') {
     const {

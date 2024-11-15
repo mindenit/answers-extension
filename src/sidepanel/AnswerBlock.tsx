@@ -9,7 +9,6 @@ const Block = styled.div`
     background: #111628;
     padding: 0.75rem;
     border-radius: 0.75rem;
-    max-width: 21rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -40,12 +39,7 @@ const AnswerSectionStyled = styled(AnswerSection)`
     gap: 0.5rem;
 `;
 
-const VerifiedSectionStyled = styled(VerifiedSection)`
-    color: #22C55E;
-    background: rgba(34, 197, 94, 0.1);
-    padding: 0.25rem 0.5rem;
-    border-radius: 999px;
-`;
+
 
 interface IProps {
     id: number,
@@ -64,7 +58,7 @@ export const AnswerBlock:React.FC<IProps> = ({
         <Block>
             <TopRow>
                 <IdSectionStyled id={id}/>
-                <VerifiedSectionStyled/>
+                <VerifiedSection/>
             </TopRow>
             <ModalTitleStyled title={title} />
             <AnswerSectionStyled answer={answer} isVerified={isVerified} />

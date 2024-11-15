@@ -8,7 +8,6 @@ const MainSection = styled.main`
   flex-direction: column;
   gap: 0.5rem;
   height: 100vh;
-  width: 92%;
   background: #090f1f;
   position: absolute;
   top: 0;

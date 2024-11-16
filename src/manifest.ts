@@ -31,11 +31,11 @@ export default defineManifest({
   },
   web_accessible_resources: [
     {
-      resources: ['img/icon-72.png', 'installation.html'],
+      resources: ['img/icon-72.png', 'installation.html', 'src/styleContentScript/styles.css'],
       matches: ['*://*.dl.nure.ua/*'],
     },
   ],
-  permissions: ['sidePanel', 'storage' ],
+  permissions: ['sidePanel', 'storage', 'activeTab'],
   content_security_policy: {
     extension_pages: "script-src 'self'; object-src 'self'",
   },

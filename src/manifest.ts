@@ -31,7 +31,7 @@ export default defineManifest({
   },
   web_accessible_resources: [
     {
-      resources: ['img/icon-72.png', 'installation.html'],
+      resources: ['img/icon-72.png', 'installation.html', 'src/styleContentScript/styles.css'],
       matches: ['*://*.dl.nure.ua/*'],
     },
   ],

@@ -56,7 +56,13 @@ function applyCustomStyles() {
             .btn-primary, .btn-link,
             .dashboard-card .dashboard-card-img .course-category {
                 background-color: #6368f2 !important;
+				margin-right: 10rem !important;
             }
+
+			#page-container-5 > div > ul > li > div > div.col-md-1.p-0.d-flex.menu > div > button {
+				margin-right: 10rem !important;
+			}
+
             .courseindex .courseindex-item.pageitem *,
             .btn-primary *, .btn-link *,
             .dashboard-card .dashboard-card-img .course-category * {
@@ -198,6 +204,7 @@ function applyCustomStyles() {
 			}
 
 			.list-group li,
+			#page-container-4 > div > div > div,
 			#page-container-0 > div > div > div {
 				width: 100% !important;
 				border-radius: 1rem !important;
@@ -210,7 +217,7 @@ function applyCustomStyles() {
 			}
 
 			#page-container-0 > div > div > div > div > div.col-md-1.p-0.d-flex.menu > div > button {
-				background: none !important;
+				margin-left: 2rem !important;
 			}
         `;
         document.head.appendChild(styleOverrides);
@@ -295,7 +302,7 @@ function applyCustomStyles() {
         const elementsToRemove = [
             '#site-news-forum',
             '.supportemail',
-            '.btn-footer-popover'
+            '.btn-footer-popover',
         ];
 
         elementsToRemove.forEach(selector => {

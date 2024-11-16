@@ -13,10 +13,15 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
 });
 
 chrome.runtime.onInstalled.addListener((details) => {
-  if (details.reason === 'install') {
-    chrome.tabs.create({ url: 'installation.html' });
+  if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
+    chrome.tabs.create({ url: 'installation.html' })
+  }
+
+  if(details.reason === chrome.runtime.OnInstalledReason.UPDATE) {
+    chrome.tabs.create({url: 'update.html'})
   }
 });
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === 'FIND_QUESTIONS') {
     const {

@@ -35,7 +35,7 @@ export default defineManifest({
       matches: ['*://*.dl.nure.ua/*'],
     },
   ],
-  permissions: ['sidePanel', 'storage' ],
+  permissions: ['sidePanel', 'storage', 'activeTab'],
   content_security_policy: {
     extension_pages: "script-src 'self'; object-src 'self'",
   },

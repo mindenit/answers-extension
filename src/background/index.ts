@@ -13,10 +13,15 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
 });
 
 chrome.runtime.onInstalled.addListener((details) => {
-  if (details.reason === 'install') {
-    chrome.tabs.create({ url: 'installation.html' });
+  if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
+    chrome.tabs.create({ url: 'installation.html' })
+  }
+
+  if(details.reason === chrome.runtime.OnInstalledReason.UPDATE) {
+    chrome.tabs.create({url: 'update.html'})
   }
 });
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === 'FIND_QUESTIONS') {
     const {
@@ -46,17 +51,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       })
       return true
     }
-
-    foundQuestions.unshift({
-      answer: "фізичної підготовленості людини до життя;",
-      createdAt:"2024-10-23T21:57:14.134Z",
-      id: 1,
-      isVerified: true,
-      name: "Перша допомога при забитті:",
-      testId: 1,
-      updatedAt: "2024-10-23T21:57:14.134Z"
-    })
-    console.log(foundQuestions)
 
     sendResponse({ type: 'SUCCESS', message: 'Питання знайдено.', questions: foundQuestions })
     return true

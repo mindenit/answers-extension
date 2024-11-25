@@ -14,7 +14,7 @@ export const Popup = () => {
   const ANSWERS_LINK = 'https://answers.mindenit.org'
   
   const [toggleStates, setToggleStates] = useState<ToggleStates>({
-    experimentalStyles: false,
+    experimentalStyles: true,
     betaAI: false,
     darkMode: false,
   })
@@ -53,7 +53,7 @@ export const Popup = () => {
             if (tabs[0]?.id) {
               chrome.tabs.sendMessage(tabs[0].id, {
                 type: 'TOGGLE_EXPERIMENTAL_STYLES',
-                enabled: newStates[key], // Передаємо нове значення
+                enabled: newStates[key], 
               });
   
               if (!newStates[key]) {
@@ -71,7 +71,7 @@ export const Popup = () => {
   
 
   const SETTINGS_OPTIONS = [
-    { key: 'experimentalStyles' as keyof ToggleStates, label: 'Експериментальні стилі' },
+    { key: 'experimentalStyles' as keyof ToggleStates, label: 'Експериментальні можливості' },
     // { key: 'betaAI' as keyof ToggleStates, label: 'Beta версія ШІ' },
     // { key: 'darkMode' as keyof ToggleStates, label: 'Темна тема' },
   ]

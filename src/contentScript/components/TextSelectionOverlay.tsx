@@ -1,5 +1,5 @@
-import React, { useRef, useCallback, useEffect, useState } from 'react'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import React, { useRef, useCallback, useEffect } from 'react'
+import { useMutation } from '@tanstack/react-query'
 import { SelectionIcon } from './SelectionIcon'
 import { Modal } from './Modal'
 import { useTextSelection } from '../hooks/useTextSelection'
@@ -16,6 +16,18 @@ export const TextSelectionOverlay: React.FC<TextSelectionOverlayProps> = ({ icon
   const iconRef = useRef<HTMLDivElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
   const [questions, setQuestions] = React.useState<ApiQuestions.IResponse[]>([])
+  
+  const notFound = (text: string): ApiQuestions.IResponse[] => {
+    return [{
+      id: 0,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      name: text,
+      answer: 'Відповідь не знайдено😕',
+      isVerified: false,
+      testId: 0
+    }]
+  }
 
   const handleClose = useCallback(() => {
     setIsModalOpen(false)
@@ -35,98 +47,56 @@ export const TextSelectionOverlay: React.FC<TextSelectionOverlayProps> = ({ icon
     }
   }, [handleClose])
 
-  const {
-    data: allQuestions,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ['questions'],
-    queryFn: ApiQuestions.get,
-    staleTime: Infinity,
-  })
-
-  const questionMutation = useMutation({
+  const searchMutation = useMutation<ApiQuestions.IResponse[], Error, string>({
     mutationFn: async (text: string) => {
-      if (chrome?.runtime?.sendMessage && allQuestions) {
-        const response = await chrome.runtime.sendMessage({
-          type: 'FIND_QUESTIONS',
-          questions: allQuestions,
-          pattern: text,
-        })
+        const response = await ApiQuestions.search({ query: text })
+        const questionsArray = Array.isArray(response.data) 
+          ? response.data 
+          : response.data 
+            ? [response.data]
+            : []
 
-        if (response.type === 'NOT FOUND') {
-          console.log('NOT FOUND')
-
-          return [
-            {
-              id: null,
-              createdAt: new Date(),
-              updatedAt: new Date(),
-              name: selectedText,
-              answer: 'Відповідь не знайдено😕',
-              isVerified: false,
-              testId: 0,
-            },
-          ]
+        if (questionsArray.length === 0) {
+          return notFound(text)
         }
 
-        if(response.questions.length > 1) {
-          chrome.storage.sync.set({ answers: response.questions })
-          chrome.runtime.sendMessage({ type: 'OPEN_SIDEBAR' });
+        if (chrome?.storage?.sync && questionsArray.length > 1) {
+          chrome.storage.sync.set({ answers: questionsArray })
+          chrome.runtime.sendMessage({ type: 'OPEN_SIDEBAR' })
         }
-
-        return response.questions
-      }
-      return []
+        
+        return questionsArray
     },
     onSuccess: (data) => {
       setQuestions(data)
       setIsModalOpen(true)
     },
     onError: (error) => {
-      console.error('Error in question mutation:', error)
+      console.error('Error in search mutation:', error)
       if (selectedText) {
-        setQuestions([
-          {
-            id: 0,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-            name: selectedText,
-            answer: 'Відповідь не знайдено😕',
-            isVerified: false,
-            testId: 0,
-          },
-        ])
+        setQuestions(notFound(selectedText))
         setIsModalOpen(true)
       }
-    },
+    }
   })
 
   const handleIconClick = useCallback(
     (e: React.MouseEvent) => {
-      e.stopPropagation() // Prevent event bubbling
+      e.stopPropagation()
 
       if (selectedText) {
         const clickX = e.clientX + window.scrollX
         const clickY = e.clientY + window.scrollY
 
         setModalPosition({ x: clickX, y: clickY })
-        questionMutation.mutate(selectedText)
+        searchMutation.mutate(selectedText)
       }
     },
-    [selectedText, questionMutation],
+    [selectedText, searchMutation]
   )
 
   if (!selectedText || !selectionPosition) {
     return null
-  }
-
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
-
-  if (error) {
-    return <div>Error: {(error as Error).message}</div>
   }
 
   return (

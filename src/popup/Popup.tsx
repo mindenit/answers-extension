@@ -25,8 +25,16 @@ export const Popup = () => {
         console.log('Loaded from storage:', result.toggleStates);
         setToggleStates((prev) => ({
           ...prev,
-          ...result.toggleStates, // Оновлення тільки отриманих значень
+          ...result.toggleStates,
         }));
+      } else {
+        const defaultStates = {
+          experimentalStyles: true,
+          betaAI: false,
+          darkMode: false,
+        };
+        chrome.storage.sync.set({ toggleStates: defaultStates });
+        setToggleStates(defaultStates);
       }
     });
   }, []);

@@ -302,8 +302,17 @@ chrome.runtime.onMessage.addListener((message) => {
 });
 
 chrome.storage.sync.get(['toggleStates'], (result) => {
-    console.log('Toggle states:', result);
-    if (result.toggleStates?.experimentalStyles) {
+    if (!result.toggleStates || result.toggleStates?.experimentalStyles !== false) {
         cleanup = applyCustomStyles();
+        
+        if (!result.toggleStates) {
+            chrome.storage.sync.set({
+                toggleStates: {
+                    experimentalStyles: true,
+                    betaAI: false,
+                    darkMode: false
+                }
+            });
+        }
     }
 });

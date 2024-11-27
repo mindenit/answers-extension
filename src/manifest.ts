@@ -7,7 +7,7 @@ export default defineManifest({
   name: `${packageData.displayName || packageData.name}${isDev ? ' Dev' : ''}`,
   description: packageData.description,
   version: packageData.version,
-  version_name: '0.0.2b2',
+  version_name: '0.0.2b3',
   manifest_version: 3,
   icons: {
     72: 'img/icon-72.png',
@@ -27,11 +27,17 @@ export default defineManifest({
     },
   ],
   side_panel: {
-    default_path: 'sidepanel.html'
+    default_path: 'sidepanel.html',
   },
   web_accessible_resources: [
     {
-      resources: ['img/icon-72.png', 'installation.html', 'src/styleContentScript/styles.css', 'update.html', "src/assets/telegram-svgrepo-com.svg"],
+      resources: [
+        'img/icon-72.png',
+        'installation.html',
+        'src/styleContentScript/styles.css',
+        'update.html',
+        'src/assets/telegram-svgrepo-com.svg',
+      ],
       matches: ['*://*.dl.nure.ua/*'],
     },
   ],

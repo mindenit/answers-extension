@@ -1,26 +1,26 @@
 import { ApiQuestions } from '../contentScript/requests/Questions'
 
-console.log('background is running');
+console.log('background is running')
 
-let windowId: any = 0;
+let windowId: any = 0
 
 chrome.windows.getCurrent((window) => {
-  windowId = window.id; // Ensure a valid windowId at the start
-});
+  windowId = window.id // Ensure a valid windowId at the start
+})
 
 chrome.tabs.onActivated.addListener((activeInfo) => {
-  windowId = activeInfo.windowId;
-});
+  windowId = activeInfo.windowId
+})
 
 chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
     chrome.tabs.create({ url: 'installation.html' })
   }
 
-  if(details.reason === chrome.runtime.OnInstalledReason.UPDATE) {
-    chrome.tabs.create({url: 'update.html'})
-  }
-});
+  // if(details.reason === chrome.runtime.OnInstalledReason.UPDATE) {
+  //   chrome.tabs.create({url: 'update.html'})
+  // }
+})
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === 'FIND_QUESTIONS') {
@@ -58,12 +58,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
   if (request.type === 'OPEN_SIDEBAR') {
     if (!chrome.sidePanel) {
-      console.error('SidePanel API is not available in this version of Chrome.');
-      return;
+      console.error('SidePanel API is not available in this version of Chrome.')
+      return
     }
 
-    chrome.sidePanel.open({ windowId })
+    chrome.sidePanel
+      .open({ windowId })
       .then(() => console.log('SidePanel opened'))
-      .catch((error) => console.error('Failed to open SidePanel:', error));
+      .catch((error) => console.error('Failed to open SidePanel:', error))
   }
 })

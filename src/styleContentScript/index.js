@@ -12,7 +12,7 @@ function applyCustomStyles() {
     const styleOverrides = document.createElement('style')
     styleOverrides.id = 'critical-style-overrides'
     styleOverrides.textContent = `
-      .bg-white {
+      .bg-white, .bg-light {
         background-color: transparent !important;
       }
       body {
@@ -293,7 +293,28 @@ function applyCustomStyles() {
         color: #fff !important;
         border: 1px solid #485465 !important;
       }
-
+      .no-overflow > div {
+        padding: 0 !important;
+        background-color: transparent !important;
+      }
+      .btn.btn-icon:hover, .btn.btn-icon:focus {
+        background-color: #6368f2 !important;
+      }
+      .drawer-toggles .drawer-toggler .btn {
+        background-color: #6368f2 !important;
+      }
+      .custom-control-input:checked ~ .custom-control-label::before {
+        background-color: #6368f2 !important;
+      }
+      .list-group-item {
+        background-color: #f8f9fc !important;
+      }
+      body.moove-darkmode .list-group-item {
+        background-color: #111628 !important;
+      }
+      .block .block-cards span.categoryname {
+        color: inherit !important;
+      }
         `
     document.head.appendChild(styleOverrides)
     styleElement = styleOverrides
@@ -347,12 +368,7 @@ function applyCustomStyles() {
     createStyles()
     setupObserver()
 
-    const elementsToRemove = [
-      '#site-news-forum',
-      '.supportemail',
-      '.btn-footer-popover',
-      '#section-1',
-    ]
+    const elementsToRemove = ['#site-news-forum', '.supportemail', '.btn-footer-popover']
 
     elementsToRemove.forEach((selector) => {
       const element = document.querySelector(selector)

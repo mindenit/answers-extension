@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { AnswerBlock } from './AnswerBlock';
-import { ApiQuestions } from '../contentScript/requests/Questions';
+import { AnswerBlock } from '../components/AnswerBlock';
+import { ApiQuestions } from '../requests/Questions';
 
 const MainSection = styled.main`
   display: flex;

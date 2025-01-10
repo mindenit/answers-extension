@@ -1,4 +1,4 @@
-import { Links } from '../../core/links'
+import { Links } from '../core/links'
 import axios from 'axios'
 import queryString from 'query-string'
 

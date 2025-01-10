@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { CloseButton } from './CloseButton'
-import { ModalTitle } from './ModalTitle'
+import { CloseButton } from './ui/CloseButton'
+import { ModalTitle } from './ui/ModalTitle'
 import { AnswerSection } from './AnswerSection'
-import { IdSection } from './IdSection'
+import { IdSection } from './ui/IdSection'
 
 interface ModalProps {
   isVerified: boolean

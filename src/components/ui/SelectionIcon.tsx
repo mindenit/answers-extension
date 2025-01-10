@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import { SelectionPosition } from '../types/types'
+import { SelectionPosition } from '../../types/types'
 
 interface SelectionIconProps {
   iconLogoPath: string

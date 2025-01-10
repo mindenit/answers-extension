@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { TextSelectionOverlay } from './components/TextSelectionOverlay'
+import { TextSelectionOverlay } from '../../components/TextSelectionOverlay'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const queryClient = new QueryClient({

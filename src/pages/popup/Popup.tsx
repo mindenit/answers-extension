@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import HomeIcon from './component/HomeIcon'
-import ToggleSwitch from './component/Switch'
+import HomeIcon from '../../components/ui/HomeIcon'
+import ToggleSwitch from '../../components/ui/Switch'
 
 
 interface ToggleStates {
@@ -86,7 +86,7 @@ export const Popup = () => {
     <Container>
       <Title>Вітаємо вас у розширені Mindenit Answers!</Title>
       <Description>
-        Знаходьте відповіді ефективніше з нами! Зекономте час для більш важливих речей!❤️
+        Знаходьте відповіді ефективніше з нами!❤️
       </Description>
       
       <HomeLink href={ANSWERS_LINK} target="_blank" rel="noopener noreferrer">

@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-import { ModalTitle } from '../contentScript/components/ModalTitle';
-import { IdSection } from '../contentScript/components/IdSection';
-import { AnswerSection } from '../contentScript/components/AnswerSection';
-import { VerifiedSection } from '../contentScript/components/VerifiedSection';
+import { ModalTitle } from './ui/ModalTitle';
+import { IdSection } from './ui/IdSection';
+import { AnswerSection } from './AnswerSection';
+import { VerifiedSection } from './ui/VerifiedSection';
 
 const Block = styled.div`
     background: #111628;

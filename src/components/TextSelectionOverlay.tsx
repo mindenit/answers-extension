@@ -1,6 +1,6 @@
 import React, { useRef, useCallback, useEffect } from 'react'
 import { useMutation } from '@tanstack/react-query'
-import { SelectionIcon } from './SelectionIcon'
+import { SelectionIcon } from './ui/SelectionIcon'
 import { Modal } from './Modal'
 import { useTextSelection } from '../hooks/useTextSelection'
 import { ApiQuestions } from '../requests/Questions'

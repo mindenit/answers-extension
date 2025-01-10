@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { renderMathContent } from '../utils/utils'
+import { renderMathContent } from '../../utils/utils'
 
 interface ModalTitleProps {
   title: string

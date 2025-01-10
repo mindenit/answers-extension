@@ -7,7 +7,7 @@ export default defineManifest({
   name: `${packageData.displayName || packageData.name}${isDev ? ' Dev' : ''}`,
   description: packageData.description,
   version: packageData.version,
-  version_name: '0.0.2b5',
+  version_name: '0.0.2b6',
   manifest_version: 3,
   icons: {
     72: 'img/icon-72.png',
@@ -23,7 +23,7 @@ export default defineManifest({
   content_scripts: [
     {
       matches: ['*://*.dl.nure.ua/*'],
-      js: ['src/contentScript/index.tsx', 'src/styleContentScript/index.js'],
+      js: ['src/contentScripts/modalContentScript/index.tsx', 'src/contentScripts/styleContentScript/index.js'],
     },
   ],
   side_panel: {
@@ -34,9 +34,10 @@ export default defineManifest({
       resources: [
         'img/icon-72.png',
         'installation.html',
-        'src/styleContentScript/styles.css',
+        'src/contentScripts/styleContentScript/styles.css',
         'update.html',
         'src/assets/telegram-svgrepo-com.svg',
+        'src/assets/qr.png',
       ],
       matches: ['*://*.dl.nure.ua/*'],
     },

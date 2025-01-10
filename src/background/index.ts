@@ -1,4 +1,4 @@
-import { ApiQuestions } from '../contentScript/requests/Questions'
+import { ApiQuestions } from '../requests/Questions'
 
 console.log('background is running')
 

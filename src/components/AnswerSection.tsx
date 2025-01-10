@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { CheckCircleIcon } from './CheckCircleIcon'
+import { CheckCircleIcon } from './ui/CheckCircleIcon'
 import { renderMathContent } from '../utils/utils'
 
 interface AnswerSectionProps {
@@ -21,7 +21,6 @@ const ContentWrapper = styled.div`
   align-items: center;
   gap: 0.5rem; 
 `
-
 
 export const AnswerSection: React.FC<AnswerSectionProps> = ({ answer, isVerified }) => {
   return (

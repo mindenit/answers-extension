@@ -1,20 +1,15 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import { crx } from '@crxjs/vite-plugin'
-import react from '@vitejs/plugin-react'
-
+import vue from '@vitejs/plugin-vue'
 import manifest from './src/manifest'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '')
+  const production = mode === 'production'
 
   return {
-    define: {
-      'process.env.NODE_ENV': JSON.stringify(env.NODE_ENV),
-      'process.env.API_LLM': JSON.stringify(env.API_LLM),
-      'process.env.API_BACKEND': JSON.stringify(env.API_BACKEND),
-    },
     build: {
+      cssCodeSplit: true,
       emptyOutDir: true,
       outDir: 'build',
       rollupOptions: {
@@ -23,7 +18,6 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-
-    plugins: [crx({ manifest }), react()],
+    plugins: [crx({ manifest }), vue()],
   }
 })

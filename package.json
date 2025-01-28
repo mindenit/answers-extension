@@ -23,6 +23,7 @@
     "zip": "npm run build && node src/zip.js"
   },
   "dependencies": {
+    "tailwind": "^4.0.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {

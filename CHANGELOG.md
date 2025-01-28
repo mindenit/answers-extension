@@ -1,15 +1,18 @@
-# CHANGELOG
+# Change Log
 
-```txt
-Summary
-  1. document grouping follow 'SemVer2.0' protocol
-  2. use 'PATCH' as a minimum granularity
-  3. use concise descriptions
-  4. type: feat \ fix \ update \ perf \ remove \ docs \ chore
-  5. version timestamp follow the yyyy.MM.dd format
-```
+## Example update
 
-## 0.0.0 [2025.01.12]
+- Update README.md
+- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae ultricies.
 
-- feat: initial
-- feat: generator by ![create-chrome-ext](https://github.com/guocaoyi/create-chrome-ext)
+- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae ultricies.
+
+- [x] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae ultricies.
+
+- [ ] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae ultricies.
+
+| Left columns | Right columns | Center Align |
+| ------------ | ------------: | :----------: |
+| left foo     |     right foo |  center foo  |
+| left bar     |     right bar |  center bar  |
+| left baz     |     right baz |  center baz  |

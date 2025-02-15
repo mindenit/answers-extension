@@ -14,7 +14,6 @@ declare module 'vue' {
     IPhDotsThreeVertical: typeof import('~icons/ph/dots-three-vertical')['default']
     IPhGear: typeof import('~icons/ph/gear')['default']
     IPhGlobe: typeof import('~icons/ph/globe')['default']
-    IPhListHeart: typeof import('~icons/ph/list-heart')['default']
     IPhMinus: typeof import('~icons/ph/minus')['default']
     IPhMoon: typeof import('~icons/ph/moon')['default']
     IPhPlus: typeof import('~icons/ph/plus')['default']
@@ -29,6 +28,7 @@ declare module 'vue' {
     RouterLinkUp: typeof import('./../components/RouterLinkUp.vue')['default']
     RouterView: typeof import('vue-router')['RouterView']
     TailwindEmptyState: typeof import('./../components/state/tailwind-empty-state.vue')['default']
+    TelegramButton: typeof import('./../components/TelegramButton.vue')['default']
     TestComponent: typeof import('./../components/TestComponent.vue')['default']
     ThemeSwitch: typeof import('./../components/ThemeSwitch.vue')['default']
   }

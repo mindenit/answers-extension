@@ -1,24 +1,24 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Heading, Text } from "@mindenit/ui"
+const supportUrl = __SUPPORT_URL__
+</script>
 
 <template>
   <div>
     <div class="hero">
       <div class="hero-content text-center">
         <div class="max-w-md">
-          <h1>Hello there</h1>
-          <p>
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+          <Heading size="large">Вітаємо вас у розширені Mindenit Answers!</Heading>
+          <Text size="paragraph">
+            Знаходьте відповіді ефективніше з нами! Зекономте час для більш важливих речей!❤️
+          </Text>
 
           <div class="flex gap-2 justify-center mb-4">
             <RouterLink
               to="/common/features"
               class="btn btn-primary"
             >
-              <i-ph-list-heart />
-              Features
+              <TelegramButton :href="supportUrl"/>              
             </RouterLink>
             <RouterLink
               to="/common/pricing"

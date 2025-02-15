@@ -8,6 +8,7 @@ import Components from "unplugin-vue-components/vite"
 import { createHtmlPlugin } from "vite-plugin-html"
 import VueRouter from "unplugin-vue-router/vite"
 import { defineConfig } from "vite"
+import MindenitUiResolver from '@mindenit/ui/resolver'
 // @ts-expect-error commonjs module
 import { defineViteConfig as define } from "./define.config.mjs"
 import vueDevTools from "vite-plugin-vue-devtools"
@@ -127,6 +128,9 @@ export default defineConfig({
       resolvers: [
         // auto import icons
         IconsResolver(),
+        MindenitUiResolver({
+          prefix: 'U'
+        })
       ],
       directoryAsNamespace: true,
       globalNamespaces: ["account", "state"],

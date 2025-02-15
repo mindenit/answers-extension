@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Alert } from "@mindenit/ui"
+</script>
 
 <template>
   <div class="navbar bg-primary text-primary-content p-2">
@@ -13,6 +15,7 @@
           class="h-8 w-auto"
         />
         <div class="text-base font-semibold">Vite Vue 3 Chrome Extension</div>
+        <div><Alert status="error" title="Insert your alert title here"></Alert></div>
       </RouterLink>
     </div>
     <div class="flex-none">

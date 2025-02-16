@@ -21,10 +21,13 @@ export const defineViteConfig = {
   __VERSION__: jsn(packageJson.version),
   __NAME__: jsn(packageJson.name),
   __DISPLAY_NAME__: jsn(packageJson.displayName),
+  __DISCORD_URL__: jsn(packageJson.discordUrl),
   __CHANGELOG__: jsn(changelog),
   __GIT_COMMIT__: jsn(gitCommit),
   __GITHUB_URL__: jsn(packageJson.repository.url),
-  __SUPPORT_URL__: jsn(packageJson.supportUrl), 
+  __SUPPORT_URL__: jsn(packageJson.supportUrl),
+  __DONATE_URL__: jsn(packageJson.donateUrl), 
+  __TELEGRAM_URL__: jsn(packageJson.telegramUrl),
   // Set the HTML title for all pages from package.json so you can use %HTML_TITLE% in your HTML files.
   HTML_TITLE: jsn(packageJson.displayName),
 }

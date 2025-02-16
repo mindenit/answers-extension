@@ -128,6 +128,10 @@ export default defineConfig({
       resolvers: [
         // auto import icons
         IconsResolver(),
+        // IconsResolver({
+        //   prefix: 'Icon',
+        //   enabledCollections: ['lucide']
+        // }),
         MindenitUiResolver({
           prefix: 'U'
         })
@@ -171,6 +175,7 @@ export default defineConfig({
     write: true,
     rollupOptions: {
       // ui or pages that are not specified in manifest file need to be specified here
+      // Хай просто буде, мене вже воно заїбало
       input: {
         setup: "src/ui/setup/index.html",
         iframe: "src/ui/content-script-iframe/index.html",

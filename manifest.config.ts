@@ -29,14 +29,14 @@ export default {
     service_worker: "src/background/index.ts",
     type: "module",
   },
-  content_scripts: [
-    {
-      all_frames: false,
-      js: ["src/content-script/index.ts"],
-      matches: ["*://*/*"],
-      run_at: "document_end",
-    },
-  ],
+  // content_scripts: [
+  //   {
+  //     all_frames: false,
+  //     js: ["src/content-script/index.ts"],
+  //     matches: ["*://*/*"],
+  //     run_at: "document_end",
+  //   },
+  // ],
   side_panel: {
     default_path: "src/ui/side-panel/index.html",
   },

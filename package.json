@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@iconify/vue": "^4.3.0",
     "@mindenit/ui": "^0.2.1",
     "marked": "^15.0.6",
     "notivue": "^2.4.5",
@@ -66,7 +67,10 @@
     "webext-bridge": "^6.0.1"
   },
   "displayName": "Answers Extension",
-  "supportUrl": "t.me/mindenit",
+  "supportUrl": "https://t.me/ketronix_dev",
+  "telegramUrl": "https://t.me/mindenit",
+  "discordUrl": "https://discord.gg/c3A6KmsR",
+  "donateUrl": "https://send.monobank.ua/jar/2GW9aAQNXE",
   "name": "vite-vue3-browser-extension-v3",
   "overrides": {
     "@crxjs/vite-plugin": "$@crxjs/vite-plugin"
@@ -87,7 +91,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/mubaidr/vite-vue3-browser-extension-v3"
+    "url": "https://github.com/mindenit"
   },
   "scripts": {
     "build": "npm run build:chrome && npm run build:firefox",

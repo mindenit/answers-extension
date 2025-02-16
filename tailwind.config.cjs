@@ -1,9 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['src/**/*.{html,vue,js,ts,jsx,tsx}'],
-  theme: {
-    extend: {},
-  },
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -94,11 +92,34 @@ module.exports = {
   plugins: [
     'prettier-plugin-tailwindcss',
     require('@tailwindcss/typography'),
-    // require('@tailwindcss/forms'),
     require('daisyui'),
   ],
   daisyui: {
-    themes: ['light', 'dark'],
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+          primary: "hsl(238, 85%, 67%)", // royal-blue-500
+          secondary: "hsl(217, 14%, 47%)", // fiord-500
+          accent: "hsl(89, 49%, 44%)", // christi-500
+          neutral: "hsl(220, 30%, 96%)", // fiord-100
+          "base-100": "hsl(220, 33%, 98%)", // fiord-50
+          "base-200": "hsl(212, 29%, 91%)", // fiord-200
+          "base-300": "hsl(215, 23%, 84%)", // fiord-300
+        },
+        dark: {
+          ...require("daisyui/src/theming/themes")["dark"],
+          primary: "hsl(233, 91%, 74%)", // royal-blue-400
+          secondary: "hsl(217, 18%, 65%)", // fiord-400
+          accent: "hsl(88, 47%, 54%)", // christi-400
+          neutral: "hsl(219, 29%, 18%)", // fiord-800
+          "base-100": "hsl(225, 41%, 11%)", // fiord-900
+          "base-200": "hsl(215, 21%, 26%)", // fiord-700
+          "base-300": "hsl(215, 17%, 34%)", // fiord-600
+        }
+      }
+    ],
+    darkTheme: "dark",
     logs: false,
   },
 }

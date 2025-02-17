@@ -5,13 +5,11 @@ export function useUpdatePage() {
   const { data: showUpdatePage } = useBrowserLocalStorage<boolean>("showUpdatePage", true)
   
   const isUpdate = computed(() => showUpdatePage.value)
-  
-  const setShowUpdatePage = (value: boolean) => {
-    showUpdatePage.value = value
-  }
+
+  const toggleUpdatePage = useToggle(showUpdatePage.value)
 
   return {
     isUpdate,
-    setShowUpdatePage
+    toggleUpdatePage
   }
 }

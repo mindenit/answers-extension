@@ -1,45 +1,37 @@
-import { ApiQuestions } from '../contentScript/requests/Questions'
+// Sample code if using extensionpay.com
+// import { extPay } from '@/utils/payment/extPay'
+// extPay.startBackground()
 
-console.log('background is running')
+chrome.runtime.onInstalled.addListener(async (opt) => {
+  // Check if reason is install or update. Eg: opt.reason === 'install' // If extension is installed.
+  // opt.reason === 'update' // If extension is updated.
+  if (opt.reason === "install") {
+    await chrome.storage.local.clear()
 
-chrome.runtime.onInstalled.addListener((details) => {
-  if (details.reason === 'install') {
-    chrome.tabs.create({ url: 'installation.html' })
+    chrome.tabs.create({
+      active: true,
+      // Open the setup page and append `?type=install` to the URL so frontend
+      // can know if we need to show the install page or update page.
+      url: chrome.runtime.getURL("src/ui/setup/index.html#/setup/install"),
+    })
+  }
+
+  if (opt.reason === "update") {
+    chrome.tabs.create({
+      active: true,
+      url: chrome.runtime.getURL("src/ui/setup/index.html#/setup/update"),
+    })
   }
 })
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'FIND_QUESTIONS') {
-    const {
-      questions,
-      pattern,
-    }: {
-      questions: ApiQuestions.IResponse[]
-      pattern: string
-    } = request
+self.onerror = function (message, source, lineno, colno, error) {
+  console.info("Error: " + message)
+  console.info("Source: " + source)
+  console.info("Line: " + lineno)
+  console.info("Column: " + colno)
+  console.info("Error object: " + error)
+}
 
-    const foundQuestions = []
-    let index = 0
+console.info("hello world from background")
 
-    for (let i = 0; i < questions.length; i++) {
-      if (questions[i].name.includes(pattern)) {
-        foundQuestions[index] = questions[i]
-        index++
-      }
-    }
-
-    if (foundQuestions.length === 0) {
-      console.log(foundQuestions)
-      sendResponse({
-        type: 'NOT FOUND',
-        message: 'Питання не знайдено.',
-        questions: foundQuestions,
-      })
-      return true
-    }
-    console.log(foundQuestions)
-
-    sendResponse({ type: 'SUCCESS', message: 'Питання знайдено.', questions: foundQuestions })
-    return true
-  }
-})
+export {}

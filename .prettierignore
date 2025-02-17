@@ -1,6 +1,5 @@
-# Ignore artifacts:
-build
-coverage
-node_modules
+auto-imports.d.ts
+components.d.ts
 pnpm-lock.yaml
-pnpm-workspace.yaml
+yarn.lock
+node_modules/

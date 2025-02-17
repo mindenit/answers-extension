@@ -1,6 +1,6 @@
 export const useOptionsStore = defineStore("options", () => {
   const { isDark, toggleDark } = useTheme()
-  const { isUpdate, setShowUpdatePage}  = useUpdatePage();
+  const { showUpdatePage, toggleUpdatePage}  = useUpdatePage();
   const { data: profile } = useBrowserSyncStorage<{
     name: string
     age: number
@@ -20,8 +20,8 @@ export const useOptionsStore = defineStore("options", () => {
   return {
     isDark,
     toggleDark,
-    isUpdate,
-    setShowUpdatePage,
+    showUpdatePage,
+    toggleUpdatePage,
     profile,
     others,
   }

@@ -298,6 +298,7 @@
     "useToString": true,
     "useToggle": true,
     "useTransition": true,
+    "useUpdatePage": true,
     "useUrlSearchParams": true,
     "useUserMedia": true,
     "useVModel": true,
@@ -327,7 +328,6 @@
     "watchThrottled": true,
     "watchTriggerable": true,
     "watchWithFilter": true,
-    "whenever": true,
-    "useUpdatePage": true
+    "whenever": true
   }
 }

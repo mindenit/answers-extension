@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { FormLabel, Heading, Switch } from '@mindenit/ui';
+
 const optionsStore = useOptionsStore()
 // const { toggleDark } = optionsStore
-const { isDark, profile, others } = storeToRefs(optionsStore)
+const { isDark, showUpdatePage, profile, others } = storeToRefs(optionsStore)
 </script>
 
 <template>
@@ -10,75 +12,25 @@ const { isDark, profile, others } = storeToRefs(optionsStore)
   >
     <RouterLinkUp />
 
-    <h1>Options</h1>
-    <p>
-      You can configure various options related to this extension here. These
-      options/ settings are peristent, available in all contexts, implemented
-      using Pinia and useBrowserStorage composable.
-    </p>
+    <Heading size="large">Налаштування</Heading>
 
-    <h3>User Interface</h3>
-    <p>Change application interface settings.</p>
+    <Heading size="medium">Користувацький інтерфейс</Heading>
 
     <div class="form-control">
-      <label>Enabel Dark Theme</label>
-      <input
+      <FormLabel class="dark:text-white text-md">Темна тема</FormLabel>
+      <Switch
         v-model="isDark"
         type="checkbox"
-        class="toggle"
+        class="toggle bg-primary hover:bg-primary"
       />
     </div>
-
     <div class="form-control">
-      <label>Change Language</label>
-      <LocaleSwitch />
-    </div>
-
-    <h3>Profile</h3>
-    <p>Change your name and age.</p>
-
-    <div class="form-control">
-      <label>Name</label>
-      <input
-        v-model="profile.name"
-        type="text"
-      />
-    </div>
-
-    <div class="form-control">
-      <label>Age</label>
-      <input
-        v-model="profile.age"
-        type="number"
-      />
-    </div>
-
-    <h3>Others</h3>
-    <p>Some other settings related to extension usage.</p>
-
-    <div class="form-control">
-      <label>Enable Awesome Feature</label>
-      <input
-        v-model="others.awesome"
+      <FormLabel class="dark:text-white text-md" >Показ сторінки оновлень</FormLabel>
+      <Switch
+        v-model="showUpdatePage"
         type="checkbox"
-        class="checkbox"
+        class="toggle bg-primary hover:bg-primary"
       />
     </div>
-
-    <div class="form-control">
-      <label>Some Counter</label>
-      <input
-        v-model="others.counter"
-        type="number"
-      />
-    </div>
-
-    <p>
-      * You can also make this a compoenent and then able to use this in any
-      context like Popup, Developer Tools UI etc
-    </p>
-    <p>
-      Feel free to change groups, lsitings or options as per your requirements.
-    </p>
   </div>
 </template>

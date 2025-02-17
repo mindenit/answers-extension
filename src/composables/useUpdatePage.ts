@@ -1,15 +1,18 @@
 import { useBrowserLocalStorage } from "./useBrowserStorage"
-import { computed } from 'vue'
+import { watch } from 'vue'
 
 export function useUpdatePage() {
-  const { data: showUpdatePage } = useBrowserLocalStorage<boolean>("showUpdatePage", true)
-  
-  const isUpdate = computed(() => showUpdatePage.value)
+  const defaultUpdatePage = true
+  const updatePageKey = "show-update-page"
 
-  const toggleUpdatePage = useToggle(showUpdatePage.value)
+  const { data: showUpdatePage } = useBrowserLocalStorage<boolean>(updatePageKey, defaultUpdatePage)
+
+  const toggleUpdatePage = () => {
+    showUpdatePage.value = !showUpdatePage.value
+  }
 
   return {
-    isUpdate,
+    showUpdatePage,
     toggleUpdatePage
   }
 }

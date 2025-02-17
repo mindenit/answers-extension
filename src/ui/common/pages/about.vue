@@ -1,45 +1,49 @@
+<script setup lang="ts">
+import { Heading, Text, Link } from '@mindenit/ui';
+
+</script>
+
 <template>
   <div>
     <RouterLinkUp />
 
-    <h1>About Us</h1>
+    <div class="flex justify-center p-5 flex-col gap-4 text-center">
+      <Heading size="large">Про нас</Heading>
+      <Text size="paragraph">
+        Ми — <Link class="no-underline text-primary" href="https://mindenit.org/" :as-child="false">Mindenit</Link>, команда ентузіастів-студентів, яка займається створенням сучасних технологічних рішень для студентів. Наша мета — покращити та полегшити студентське життя завдяки сайтам, ботам та додаткам.
+      </Text>
 
-    <p>
-      Welcome to our platform! We are dedicated to providing the best service to
-      our users. Our mission is to deliver high-quality products and exceptional
-      customer support.
-    </p>
+      <Text size="large">Дякуємо за Ваш вибір і проявлену довіру!</Text>
 
-    <p>Thank you for choosing us. We look forward to serving you!</p>
+      <div class="flex justify-center gap-4 flex-wrap px-10">
+        <RouterLink
+          to="/common/change-log"
+          class="btn btn-primary"
+        >
+          Change Log
+        </RouterLink>
 
-    <div class="flex gap-2">
-      <RouterLink
-        to="/common/change-log"
-        class="btn btn-primary"
-      >
-        Change Log
-      </RouterLink>
+        <RouterLink
+          to="/common/help"
+          class="btn btn-primary"
+        >
+          Help
+        </RouterLink>
 
-      <RouterLink
-        to="/common/help"
-        class="btn btn-primary"
-      >
-        Help
-      </RouterLink>
+        <RouterLink
+          to="/common/privacy-policy"
+          class="btn btn-primary"
+        >
+          Privacy Policy
+        </RouterLink>
 
-      <RouterLink
-        to="/common/privacy-policy"
-        class="btn btn-primary"
-      >
-        Privacy Policy
-      </RouterLink>
-
-      <RouterLink
-        to="/common/terms-of-service"
-        class="btn btn-primary"
-      >
-        Terms
-      </RouterLink>
+        <RouterLink
+          to="/common/terms-of-service"
+          class="btn btn-primary"
+        >
+          Terms
+        </RouterLink>
+      </div>
     </div>
   </div>
 </template>

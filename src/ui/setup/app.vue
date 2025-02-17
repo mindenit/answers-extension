@@ -3,7 +3,7 @@ import { Notivue, Notification } from 'notivue'
 </script>
 
 <template>
-  <div>
+  <div class="min-h-screen grid grid-rows-[auto_1fr_auto]">
     <AppHeader />
 
     <div class="w-full p-4 prose">

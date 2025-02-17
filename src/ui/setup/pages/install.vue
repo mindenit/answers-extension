@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { Heading, Link, Text, Button } from "@mindenit/ui"
-import { Icon } from "@iconify/vue/dist/iconify.js"
 
 const displayName = __DISPLAY_NAME__
-const supportUrl = __SUPPORT_URL__
-const donateUrl = __DONATE_URL__
 </script>
 
 <template>
@@ -30,7 +27,7 @@ const donateUrl = __DONATE_URL__
         <Link class="text-royal-blue-500" href="https://dl.nure.ua/" :asChild="false">dl.nure.ua</Link>, виділити текст і натиснути на іконку розширення, що з'явиться 😉
       </Text>
       <div class="flex flex-col md:flex-row gap-6 w-full md:items-center md:justify-center">
-        <TelegramButton />
+        <SupportButton />
         <MonobankButton  />
       </div>
     </div>

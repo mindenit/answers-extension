@@ -1,32 +1,18 @@
 <script setup lang="ts">
-import { Alert } from "@mindenit/ui"
+  import { Icon } from '@iconify/vue/dist/iconify.js';
 </script>
 
 <template>
-  <div class="navbar bg-primary text-primary-content p-2">
+  <div class="navbar text-primary-content dark:text-white p-2">
     <div class="flex-1 pl-2">
-      <RouterLink
-        to="/"
-        class="flex gap-2 items-center"
-      >
-        <img
-          src="@assets/logo.png"
-          alt="logo"
-          class="h-8 w-auto"
-        />
-        <div class="text-base font-semibold">Vite Vue 3 Chrome Extension</div>
-        <div><Alert status="error" title="Insert your alert title here"></Alert></div>
-      </RouterLink>
+      <Logo />
     </div>
     <div class="flex-none">
       <ul class="menu menu-horizontal menu-xs">
         <li>
           <RouterLink to="/options-page">
-            <i-ph-gear />
+            <Icon icon="ph:gear" width="20" />
           </RouterLink>
-        </li>
-        <li>
-          <LocaleSwitch />
         </li>
         <li>
           <div class="dropdown dropdown-bottom dropdown-end">
@@ -35,7 +21,7 @@ import { Alert } from "@mindenit/ui"
               role="button"
               class="flex gap-1"
             >
-              <i-ph-dots-three-vertical />
+              <Icon icon="ph:dots-three-outline-vertical" width="20" />
             </div>
             <ul
               tabindex="0"

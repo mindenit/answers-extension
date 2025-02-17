@@ -9,7 +9,7 @@
 
 <template>
   <footer
-    class="flex justify-between items-center p-2 text-sm text-white"
+    class="flex justify-between items-center p-2 text-sm dark:text-white"
   >
     <aside>
       <p>Copyright © {{ new Date().getFullYear() }} - All right reserved</p>
@@ -18,7 +18,6 @@
       <Link
         :href="githubUrl"
         :asChild="false"
-        class="text-white"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -27,7 +26,6 @@
       <Link
         :href="discordUrl"
         :asChild="false"
-        class="text-white"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -36,7 +34,6 @@
       <Link
         :href="telegramUrl"
         :asChild="false"
-        class="text-white"
         target="_blank"
         rel="noopener noreferrer"
       >

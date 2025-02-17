@@ -20,28 +20,13 @@ import { Heading, Text, Link } from '@mindenit/ui';
           to="/common/change-log"
           class="btn btn-primary"
         >
-          Change Log
+          Журнал змін
         </RouterLink>
-
-        <RouterLink
-          to="/common/help"
-          class="btn btn-primary"
-        >
-          Help
-        </RouterLink>
-
         <RouterLink
           to="/common/privacy-policy"
           class="btn btn-primary"
         >
-          Privacy Policy
-        </RouterLink>
-
-        <RouterLink
-          to="/common/terms-of-service"
-          class="btn btn-primary"
-        >
-          Terms
+          Політика конфеденційності
         </RouterLink>
       </div>
     </div>

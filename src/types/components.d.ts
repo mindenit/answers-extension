@@ -11,7 +11,6 @@ declare module 'vue' {
     AppHeader: typeof import('./../components/AppHeader.vue')['default']
     DisplayError: typeof import('./../components/state/DisplayError.vue')['default']
     IPhArrowLeft: typeof import('~icons/ph/arrow-left')['default']
-    IPhGlobe: typeof import('~icons/ph/globe')['default']
     IPhMinus: typeof import('~icons/ph/minus')['default']
     IPhMoon: typeof import('~icons/ph/moon')['default']
     IPhPlus: typeof import('~icons/ph/plus')['default']

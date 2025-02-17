@@ -12,7 +12,7 @@ const changelog = __CHANGELOG__
   <div>
     <RouterLinkUp />
 
-    <p>Version: {{ version }}</p>
+    <p>Версія: {{ version }}</p>
     <!-- eslint-disable vue/no-v-html -->
     <div
       class="prose changelog"

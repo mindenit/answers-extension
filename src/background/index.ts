@@ -1,6 +1,9 @@
 // Sample code if using extensionpay.com
 // import { extPay } from '@/utils/payment/extPay'
 // extPay.startBackground()
+import { useUpdatePage } from "@/composables/useUpdatePage"
+
+const { showUpdatePage } = useUpdatePage();
 
 chrome.runtime.onInstalled.addListener(async (opt) => {
   // Check if reason is install or update. Eg: opt.reason === 'install' // If extension is installed.
@@ -16,7 +19,8 @@ chrome.runtime.onInstalled.addListener(async (opt) => {
     })
   }
 
-  if (opt.reason === "update") {
+
+  if (opt.reason === "update" && showUpdatePage.value) {
     chrome.tabs.create({
       active: true,
       url: chrome.runtime.getURL("src/ui/setup/index.html#/setup/update"),

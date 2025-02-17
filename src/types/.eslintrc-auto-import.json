@@ -298,6 +298,7 @@
     "useToString": true,
     "useToggle": true,
     "useTransition": true,
+    "useUpdatePage": true,
     "useUrlSearchParams": true,
     "useUserMedia": true,
     "useVModel": true,

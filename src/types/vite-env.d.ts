@@ -13,3 +13,4 @@ declare const __TELEGRAM_URL__: string
 declare const __CHANGELOG__: string
 declare const __GIT_COMMIT__: string
 declare const __GITHUB_URL__: string
+declare const __API_URL___: string

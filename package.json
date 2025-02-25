@@ -2,6 +2,7 @@
   "dependencies": {
     "@iconify/vue": "^4.3.0",
     "@mindenit/ui": "^0.2.1",
+    "@pinia/colada": "^0.13.6",
     "marked": "^15.0.6",
     "notivue": "^2.4.5",
     "pinia": "^2.3.0",
@@ -10,7 +11,7 @@
     "vue-router": "^4.5.0",
     "webextension-polyfill": "^0.12.0"
   },
-  "description": "A Vue 3 + Vite project for building Chrome extensions",
+  "description": "The answers extension for 'the first of the best' KNURE university",
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.0.0-beta.28",
     "@eslint/compat": "^1.2.4",
@@ -71,7 +72,8 @@
   "telegramUrl": "https://t.me/mindenit",
   "discordUrl": "https://discord.gg/c3A6KmsR",
   "donateUrl": "https://send.monobank.ua/jar/2GW9aAQNXE",
-  "name": "vite-vue3-browser-extension-v3",
+  "name": "answers",
+  "apiUrl": "https://answers.mindenit.org",
   "overrides": {
     "@crxjs/vite-plugin": "$@crxjs/vite-plugin"
   },

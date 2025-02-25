@@ -1,15 +1,23 @@
-// This import scss file is used to style the iframe that is injected into the page
 import "./index.scss"
+import { useSidebar } from "@/composables/useSidebar"
+import { watchEffect } from "vue"
+
+const { showSidebar } = useSidebar()
 
 const src = chrome.runtime.getURL("src/ui/content-script-iframe/index.html")
 
-const iframe = new DOMParser().parseFromString(
-  `<iframe class="crx-iframe" src="${src}"></iframe>`,
-  "text/html",
-).body.firstElementChild
+const iframe = document.createElement("iframe")
+iframe.className = "crx-iframe"
+iframe.src = src
 
 if (iframe) {
   document.body?.append(iframe)
+
+  iframe.style.display = showSidebar.value ? "flex" : "none"
+
+  watchEffect(() => {
+    iframe.style.display = showSidebar.value ? "flex" : "none"
+  })
 }
 
 self.onerror = function (message, source, lineno, colno, error) {

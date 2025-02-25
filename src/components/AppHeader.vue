@@ -10,6 +10,9 @@
     <div class="flex-none">
       <ul class="menu menu-horizontal menu-xs">
         <li>
+          <SidebarSwitch />
+        </li>
+        <li>
           <RouterLink to="/options-page">
             <Icon icon="ph:gear" width="20" />
           </RouterLink>
@@ -35,7 +38,7 @@
                   class="text-primary"
                 >
                   <i-ph-question />
-                  About
+                  Інфо
                 </RouterLink>
               </li>
             </ul>

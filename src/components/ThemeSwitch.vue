@@ -13,6 +13,6 @@ const { isDark, toggleDark } = useTheme()
     <template v-else>
       <i-ph-sun />
     </template>
-    Theme
+    Тема
   </button>
 </template>

@@ -1,6 +1,10 @@
+<script setup lang="ts">
+  import { Heading } from '@mindenit/ui';
+</script>
+
 <template>
   <div>
-    <h1>Content Script UI Playround</h1>
+    <Heading size="large">Пошук відповідей</Heading>
     <TestComponent />
   </div>
 </template>

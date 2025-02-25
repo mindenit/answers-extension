@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AnswersBlock: typeof import('./../components/AnswersBlock.vue')['default']
     AppFooter: typeof import('./../components/AppFooter.vue')['default']
     AppHeader: typeof import('./../components/AppHeader.vue')['default']
     DisplayError: typeof import('./../components/state/DisplayError.vue')['default']
@@ -24,6 +25,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterLinkUp: typeof import('./../components/RouterLinkUp.vue')['default']
     RouterView: typeof import('vue-router')['RouterView']
+    SidebarSwitch: typeof import('./../components/SidebarSwitch.vue')['default']
     SupportButton: typeof import('./../components/SupportButton.vue')['default']
     TailwindEmptyState: typeof import('./../components/state/tailwind-empty-state.vue')['default']
     TelegramButton: typeof import('./../components/TelegramButton.vue')['default']

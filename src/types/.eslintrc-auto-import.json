@@ -331,6 +331,10 @@
     "watchWithFilter": true,
     "whenever": true,
     "useAnswerStore": true,
-    "fetchAnswers": true
+    "fetchAnswers": true,
+    "renderMathContent": true,
+    "renderKaTeX": true,
+    "useMarkdown": true,
+    "renderMarkdown": true
   }
 }

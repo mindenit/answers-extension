@@ -5,7 +5,7 @@
 <template>
   <div>
     <Heading size="large">Пошук відповідей</Heading>
-    <TestComponent />
+    <AnswersBlock />
   </div>
 </template>
 

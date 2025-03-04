@@ -8,7 +8,7 @@ import "./index.scss"
 
 appRouter.addRoute({
   path: "/",
-  redirect: "/content-script-iframe",
+  redirect: "/text-highlight-script-iframe",
 })
 
 const app = createApp(App).use(i18n).use(notivue).use(pinia).use(appRouter)

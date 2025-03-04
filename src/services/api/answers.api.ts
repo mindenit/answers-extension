@@ -1,4 +1,4 @@
-const apiUrl = __API_URL___
+const apiUrl = __API_URL__
 
 export interface Answer {
     id: number,
@@ -12,7 +12,7 @@ export interface Answer {
 
 export async function searchQuestion(question: string): Promise<Answer[]> {
     const url = new URL(`${apiUrl}/api/questions/search`);
-    url.searchParams.append("question", question);
+    url.searchParams.append("query", question);
     
     // Tik-tok Timura Shemsedinova zaboronyv vykorystovuvaty axios
     const response = await fetch(url.toString(), {
@@ -24,5 +24,8 @@ export async function searchQuestion(question: string): Promise<Answer[]> {
     }
     
     const data = await response.json();
+
+    console.log(data)
+
     return data;
 }

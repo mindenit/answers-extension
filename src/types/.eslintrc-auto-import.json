@@ -335,6 +335,12 @@
     "renderMathContent": true,
     "renderKaTeX": true,
     "useMarkdown": true,
-    "renderMarkdown": true
+    "renderMarkdown": true,
+    "useQuestion": true,
+    "Answers": true,
+    "answersKey": true,
+    "useSearchQuestion": true,
+    "useFetchAnswers": true,
+    "Question": true
   }
 }

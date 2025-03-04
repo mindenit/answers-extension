@@ -1,75 +1,26 @@
 <script setup lang="ts">
-    import { useAnswerStore } from '@/stores/answer.store'
+    import { useFetchAnswers } from '@/composables/useFetchAnswers';
+import LoadingSpinner from './state/LoadingSpinner.vue';
 
-    const answerStore = useAnswerStore()
-
-    const { questionWithAnswers } = storeToRefs(answerStore)
+    const { data: answers, isLoading, error } = useFetchAnswers();
 </script>
 
 <template>
     <main class="flex flex-col gap-2 w-full lg:pl-2 lg:border-l border-fiord-300 dark:border-fiord-700">
-        <AnswerItem 
-            :id="123"
-            :createdAt="new Date()"
-            :updatedAt="new Date()"
-            :name="'Питання про математичний закон'"
-            :answer="'Відповідь містить формулу: \frac{hv}{c}'"            
-            :isVerified="true"
-            :testId="456"
-        />
-        <AnswerItem 
-            :id="123"
-            :createdAt="new Date()"
-            :updatedAt="new Date()"
-            :name="'Питання про математичний закон'"
-            :answer="'Відповідь містить формулу: \\(E=mc^2\\)'"
-            :isVerified="true"
-            :testId="456"
-        />
-        <AnswerItem 
-            :id="123"
-            :createdAt="new Date()"
-            :updatedAt="new Date()"
-            :name="'Питання про математичний закон'"
-            :answer="'Відповідь містить формулу: \\(E=mc^2\\)'"
-            :isVerified="true"
-            :testId="456"
-        />
-        <AnswerItem 
-            :id="123"
-            :createdAt="new Date()"
-            :updatedAt="new Date()"
-            :name="'Питання про математичний закон'"
-            :answer="'Відповідь містить формулу: \\(E=mc^2\\)'"
-            :isVerified="true"
-            :testId="456"
-        />
-        <AnswerItem 
-            :id="123"
-            :createdAt="new Date()"
-            :updatedAt="new Date()"
-            :name="'Питання про математичний закон'"
-            :answer="'Відповідь містить формулу: \\(E=mc^2\\)'"
-            :isVerified="true"
-            :testId="456"
-        />
-        <AnswerItem 
-            :id="123"
-            :createdAt="new Date()"
-            :updatedAt="new Date()"
-            :name="'Питання про математичний закон'"
-            :answer="'Відповідь містить формулу: \\(E=mc^2\\)'"
-            :isVerified="true"
-            :testId="456"
-        />
-        <AnswerItem 
-            :id="123"
-            :createdAt="new Date()"
-            :updatedAt="new Date()"
-            :name="'Питання про математичний закон'"
-            :answer="'Відповідь містить формулу: \\(E=mc^2\\)'"
-            :isVerified="true"
-            :testId="456"
-        />
+        <div v-if="isLoading"><LoadingSpinner :loading="isLoading" /></div>
+        <div v-else-if="error"><DisplayError :error="error.message" /></div>
+        <div v-else>
+            <AnswerItem
+                v-for="answer in answers"
+                :key="answer.id"
+                :id="answer.id"
+                :createdAt="new Date(answer.createdAt)"
+                :updatedAt="new Date(answer.updatedAt)"
+                :name="answer.name"
+                :answer="answer.answer"
+                :isVerified="answer.isVerified"
+                :testId="answer.testId"
+            />
+        </div>
     </main>
 </template>

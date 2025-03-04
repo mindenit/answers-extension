@@ -35,6 +35,12 @@ export default {
       js: ["src/content-script/index.ts"],
       matches: ["*://*/*"],
       run_at: "document_end",
+    },
+    {
+      all_frames: false,
+      js: ["src/text-highlight-script/index.ts"],
+      matches: ["*://*/*"],
+      run_at: "document_end",
     }
   ],
   side_panel: {

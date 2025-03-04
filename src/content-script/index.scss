@@ -1,4 +1,13 @@
+.crx-container {
+  width: 420px;
+  min-height: 340px;
+  position: fixed; /* Додано для переміщення */
+  display: flex;
+  flex-direction: column;
+}
+
 .crx-iframe {
+  cursor: move;
   border: none;
   border-radius: 8px;
   box-shadow:
@@ -6,6 +15,7 @@
     0 -1px 0px rgba(0, 0, 0, 0.02);
   background-color: #fff;
   margin: 2em;
+  padding: 2px;
   position: fixed;
   z-index: 1000;
   bottom: 0;
@@ -34,4 +44,13 @@
 
 .crx-toggle-button:hover {
   background-color: #0056b3;
+}
+
+.draggable {
+  padding: 10px;
+  height: 20px;
+  cursor: move;
+  z-index: 10;
+  background-color: #0056b3;
+  color: #fff;
 }

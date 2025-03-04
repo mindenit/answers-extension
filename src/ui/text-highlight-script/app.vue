@@ -2,15 +2,7 @@
 </script>
 
 <template>
-  <div>
-    <AppHeader />
-
-    <div class="p-4 prose">
-      <RouterView />
-    </div>
-
-    <AppFooter />
-  </div>
+  <HighlightSearchButton />
 </template>
 
 <style scoped></style>

@@ -1,7 +1,8 @@
 import { useSearchQuestion } from "@/composables/useSearchQuestion";
+import { useSidebar } from "@/composables/useSidebar";
 
 const searchQuestion = useSearchQuestion();
-
+const sidebar = useSidebar();
 (() => {
   const createButton = () => {
     const button = document.createElement('div');
@@ -50,6 +51,7 @@ const searchQuestion = useSearchQuestion();
   button.addEventListener('click', async () => {
     if (selectedText) {
       searchQuestion.setQuestion(selectedText)
+      sidebar.showSidebar()
     }
   });
 })();

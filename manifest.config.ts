@@ -41,6 +41,12 @@ export default {
       js: ["src/text-highlight-script/index.ts"],
       matches: ["*://*/*"],
       run_at: "document_end",
+    },
+    {
+      all_frames: false,
+      js: ["src/content-style-nure-script/index.js"],
+      matches: ["*://*/*"],
+      run_at: "document_end",
     }
   ],
   side_panel: {

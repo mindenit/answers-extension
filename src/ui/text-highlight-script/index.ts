@@ -1,8 +1,6 @@
 import { i18n } from "@/utils/i18n"
 import { notivue } from "@/utils/notifications"
 import { pinia } from "@/utils/pinia"
-import { createPinia } from 'pinia'
-import { PiniaColada } from '@pinia/colada'
 import { appRouter } from "@/utils/router"
 import { createApp } from "vue"
 import App from "./app.vue"
@@ -10,16 +8,10 @@ import "./index.scss"
 
 appRouter.addRoute({
   path: "/",
-  redirect: "/content-script-iframe",
+  redirect: "/text-highlight-script-iframe",
 })
 
-const app = createApp(App)
-  .use(i18n)
-  .use(notivue)
-  .use(pinia)
-  .use(createPinia())
-  .use(PiniaColada)
-  .use(appRouter)
+const app = createApp(App).use(i18n).use(notivue).use(pinia).use(appRouter)
 
 app.mount("#app")
 

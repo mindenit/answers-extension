@@ -1,5 +1,4 @@
 import { useBrowserLocalStorage } from "./useBrowserStorage"
-import { watch } from 'vue'
 
 export function useUpdatePage() {
   const defaultUpdatePage = true

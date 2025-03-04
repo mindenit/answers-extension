@@ -7,13 +7,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AnswerItem: typeof import('./../components/AnswerItem.vue')['default']
+    AnswersBlock: typeof import('./../components/AnswersBlock.vue')['default']
     AppFooter: typeof import('./../components/AppFooter.vue')['default']
     AppHeader: typeof import('./../components/AppHeader.vue')['default']
     DisplayError: typeof import('./../components/state/DisplayError.vue')['default']
+    HighlightSearchButton: typeof import('./../components/HighlightSearchButton.vue')['default']
     IPhArrowLeft: typeof import('~icons/ph/arrow-left')['default']
-    IPhMinus: typeof import('~icons/ph/minus')['default']
     IPhMoon: typeof import('~icons/ph/moon')['default']
-    IPhPlus: typeof import('~icons/ph/plus')['default']
     IPhQuestion: typeof import('~icons/ph/question')['default']
     IPhSun: typeof import('~icons/ph/sun')['default']
     LoadingSpinner: typeof import('./../components/state/LoadingSpinner.vue')['default']
@@ -24,6 +25,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterLinkUp: typeof import('./../components/RouterLinkUp.vue')['default']
     RouterView: typeof import('vue-router')['RouterView']
+    SidebarSwitch: typeof import('./../components/SidebarSwitch.vue')['default']
     SupportButton: typeof import('./../components/SupportButton.vue')['default']
     TailwindEmptyState: typeof import('./../components/state/tailwind-empty-state.vue')['default']
     TelegramButton: typeof import('./../components/TelegramButton.vue')['default']

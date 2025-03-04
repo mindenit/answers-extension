@@ -12,7 +12,7 @@ const [major, minor, patch, label = "0"] = version
 
 export default {
   author: {
-    email: "mubaidr@gmail.com",
+    email: "volodymyr.nakonechnyi28@gmail.com",
   },
   name: env.mode === "staging" ? `[INTERNAL] ${name}` : displayName || name,
   description,
@@ -55,7 +55,7 @@ export default {
   devtools_page: "src/devtools/index.html",
   options_page: "src/ui/options-page/index.html",
   offline_enabled: true,
-  host_permissions: [],
+  host_permissions: ["https://dl.nure.ua/*"],
   permissions: ["storage", "tabs", "background", "sidePanel"],
   web_accessible_resources: [],
   icons: {

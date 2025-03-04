@@ -1,17 +1,26 @@
 import { useQuery } from "@pinia/colada";
-import { type Answer, searchQuestion } from "@/services/api/answers.api";
-import { useSearchQuestion } from "@/composables/useSearchQuestion"; // Import the hook
+import { searchQuestion } from "@/services/api/answers.api";
+import { useSearchQuestion } from "@/composables/useSearchQuestion";
 import { computed } from "vue";
 
 export const useFetchAnswers = () => {
-  const { data } = useSearchQuestion();
+  const { data: questionData } = useSearchQuestion();
 
   return useQuery({
-    key: () => ["search-question", data.value.question],
+    key: () => ["search-question", questionData.value.question],
     query: async () => {
-      const answers = await searchQuestion(data.value.question);
-      return answers;
+      const question = questionData.value.question;
+      
+      if (!question || question.trim() === '') {
+        return [];
+      }
+      
+      const fetchedAnswers = await searchQuestion(question);
+      return fetchedAnswers || [];
     },
-    enabled: computed(() => !!data.value.question)
+    enabled: computed(() => {
+      const question = questionData.value.question;
+      return !!question && question.trim() !== '';
+    })
   });
 };

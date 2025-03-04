@@ -6,10 +6,10 @@ import LoadingSpinner from './state/LoadingSpinner.vue';
 </script>
 
 <template>
-    <main class="flex flex-col gap-2 w-full lg:pl-2 lg:border-l border-fiord-300 dark:border-fiord-700">
+    <main class="w-full lg:pl-2 lg:border-l border-fiord-300 dark:border-fiord-700">
         <div v-if="isLoading"><LoadingSpinner :loading="isLoading" /></div>
         <div v-else-if="error"><DisplayError :error="error.message" /></div>
-        <div v-else>
+        <div v-else class="flex flex-col gap-2">
             <AnswerItem
                 v-for="answer in answers"
                 :key="answer.id"

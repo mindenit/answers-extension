@@ -1,23 +1,16 @@
 import "./index.scss"
 import { useSidebar } from "@/composables/useSidebar"
 import { watchEffect } from "vue"
+import { useContentScriptIframeSize } from "@/composables/useContentScriptIframeSize"
 
 const { showSidebar } = useSidebar()
+const { contentScriptIframeSize } = useContentScriptIframeSize();  
 
 const src = chrome.runtime.getURL("src/ui/content-script-iframe/index.html")
-// const container = document.createElement("div");
-// container.className="crx-container";
-
-// const draggable = document.createElement("div");
-// draggable.className="draggable"; 
-// draggable.textContent = "Drag"
 
 const iframe = document.createElement("iframe")
 iframe.className = "crx-iframe"
 iframe.src = src
-
-// container.append(draggable);
-// container.append(iframe);
 
 if (iframe) {
   document.body?.append(iframe)
@@ -26,6 +19,8 @@ if (iframe) {
 
   watchEffect(() => {
     iframe.style.display = showSidebar.value ? "flex" : "none"
+    iframe.style.width = `${contentScriptIframeSize.value.width}px`;
+    iframe.style.height = `${contentScriptIframeSize.value.height}px`;
   })
 
   // WORST!!! MAKE BETTER!!!!
@@ -57,7 +52,7 @@ if (iframe) {
         window.addEventListener('blur', stopDragging);
     }
 
-    function drag(e) {
+    function drag(e: any) {
         if (!isDragging) return; 
 
         e.preventDefault();

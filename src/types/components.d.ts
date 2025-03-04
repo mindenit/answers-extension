@@ -29,6 +29,7 @@ declare module 'vue' {
     SupportButton: typeof import('./../components/SupportButton.vue')['default']
     TailwindEmptyState: typeof import('./../components/state/tailwind-empty-state.vue')['default']
     TelegramButton: typeof import('./../components/TelegramButton.vue')['default']
+    TestComponent: typeof import('./../components/TestComponent.vue')['default']
     ThemeSwitch: typeof import('./../components/ThemeSwitch.vue')['default']
   }
 }

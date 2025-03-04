@@ -1,9 +1,30 @@
 <script setup lang="ts">
-import { FormLabel, Heading, Switch } from '@mindenit/ui';
+import { FormLabel, Heading, Switch, TextFieldInput } from '@mindenit/ui';
+import { storeToRefs } from 'pinia';
+import { watch } from 'vue';
 
-const optionsStore = useOptionsStore()
-// const { toggleDark } = optionsStore
-const { isDark, showUpdatePage, profile, others } = storeToRefs(optionsStore)
+const optionsStore = useOptionsStore();
+const { isDark, showUpdatePage, contentScriptIframeSize } = storeToRefs(optionsStore);
+
+const restrictSize = (value: number, min: number = 200, max: number = 1000): number => {
+  return Math.max(min, Math.min(max, Number(value) || min)); // Перетворюємо в число, якщо NaN — беремо min
+};
+
+watch(
+  () => contentScriptIframeSize.value.height,
+  (newHeight) => {
+    const validatedHeight = restrictSize(newHeight);
+    optionsStore.setIframeHeight(validatedHeight); // Метод для оновлення висоти в стореджі
+  }
+);
+
+watch(
+  () => contentScriptIframeSize.value.width,
+  (newWidth) => {
+    const validatedWidth = restrictSize(newWidth);
+    optionsStore.setIframeWidth(validatedWidth); // Метод для оновлення ширини в стореджі
+  }
+);
 </script>
 
 <template>
@@ -25,11 +46,34 @@ const { isDark, showUpdatePage, profile, others } = storeToRefs(optionsStore)
       />
     </div>
     <div class="form-control">
-      <FormLabel class="dark:text-white text-md" >Показ сторінки оновлень</FormLabel>
+      <FormLabel class="dark:text-white text-md">Показ сторінки оновлень</FormLabel>
       <Switch
         v-model="showUpdatePage"
         type="checkbox"
         class="toggle bg-primary hover:bg-primary"
+      />
+    </div>
+    <div class="form-control flex flex-col gap-2">
+      <FormLabel class="dark:text-white text-md">Розміри модального вікна</FormLabel>
+      <TextFieldInput
+        v-model.number="contentScriptIframeSize.height"
+        class="dark:text-white"
+        :disabled="false"
+        placeholder="Висота вікна"
+        type="number"
+        min="200"
+        max="1000"
+        @input="contentScriptIframeSize.height = restrictSize($event.target.value)"
+      />
+      <TextFieldInput
+        v-model.number="contentScriptIframeSize.width"
+        class="dark:text-white"
+        :disabled="false"
+        placeholder="Ширина вікна"
+        type="number"
+        min="200"
+        max="1000"
+        @input="contentScriptIframeSize.width = restrictSize($event.target.value)"
       />
     </div>
   </div>

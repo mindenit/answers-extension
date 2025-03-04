@@ -4,17 +4,17 @@ import { storeToRefs } from 'pinia';
 import { watch } from 'vue';
 
 const optionsStore = useOptionsStore();
-const { isDark, showUpdatePage, contentScriptIframeSize } = storeToRefs(optionsStore);
+const { isDark, showUpdatePage, contentScriptIframeSize, styles } = storeToRefs(optionsStore);
 
 const restrictSize = (value: number, min: number = 200, max: number = 1000): number => {
-  return Math.max(min, Math.min(max, Number(value) || min)); // Перетворюємо в число, якщо NaN — беремо min
+  return Math.max(min, Math.min(max, Number(value) || min));
 };
 
 watch(
   () => contentScriptIframeSize.value.height,
   (newHeight) => {
     const validatedHeight = restrictSize(newHeight);
-    optionsStore.setIframeHeight(validatedHeight); // Метод для оновлення висоти в стореджі
+    optionsStore.setIframeHeight(validatedHeight);
   }
 );
 
@@ -22,7 +22,7 @@ watch(
   () => contentScriptIframeSize.value.width,
   (newWidth) => {
     const validatedWidth = restrictSize(newWidth);
-    optionsStore.setIframeWidth(validatedWidth); // Метод для оновлення ширини в стореджі
+    optionsStore.setIframeWidth(validatedWidth);
   }
 );
 </script>
@@ -53,6 +53,7 @@ watch(
         class="toggle bg-primary hover:bg-primary"
       />
     </div>
+    
     <div class="form-control flex flex-col gap-2">
       <FormLabel class="dark:text-white text-md">Розміри модального вікна</FormLabel>
       <TextFieldInput
@@ -74,6 +75,15 @@ watch(
         min="200"
         max="1000"
         @input="contentScriptIframeSize.width = restrictSize($event.target.value)"
+      />
+    </div>
+
+    <div class="form-control">
+      <FormLabel class="dark:text-white text-md">Покращені стилі для dl.nure.ua</FormLabel>
+      <Switch
+        v-model="styles"
+        type="checkbox"
+        class="toggle bg-primary hover:bg-primary"
       />
     </div>
   </div>

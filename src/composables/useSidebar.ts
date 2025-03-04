@@ -4,13 +4,18 @@ export function useSidebar() {
   const defaultSidebar = false
   const showSidebarKey = "show-sidebar"
 
-  const { data: showSidebar } = useBrowserLocalStorage<boolean>(showSidebarKey, defaultSidebar)
+  const { data: isShowSidebar } = useBrowserLocalStorage<boolean>(showSidebarKey, defaultSidebar)
 
   const toggleSidebar = () => {
-    showSidebar.value = !showSidebar.value
+    isShowSidebar.value = !isShowSidebar.value
+  }
+
+  const showSidebar = () => {
+    isShowSidebar.value = true;
   }
 
   return {
+    isShowSidebar,
     showSidebar,
     toggleSidebar
   }

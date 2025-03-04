@@ -1,9 +1,11 @@
 import { useContentScriptIframeSize } from "@/composables/useContentScriptIframeSize"; 
+import { useStyles } from "@/composables/useStyles";
 
 export const useOptionsStore = defineStore("options", () => {
   const { isDark, toggleDark } = useTheme()
   const { showUpdatePage, toggleUpdatePage}  = useUpdatePage();
   const { contentScriptIframeSize, setIframeHeight, setIframeWidth } = useContentScriptIframeSize()
+  const { styles, toggleStyles } = useStyles()
 
   return {
     isDark,
@@ -12,6 +14,8 @@ export const useOptionsStore = defineStore("options", () => {
     toggleUpdatePage,
     contentScriptIframeSize,
     setIframeHeight,
-    setIframeWidth
+    setIframeWidth,
+    styles,
+    toggleStyles
   }
 })

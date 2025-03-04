@@ -3,7 +3,7 @@ import { useSidebar } from "@/composables/useSidebar"
 import { watchEffect } from "vue"
 import { useContentScriptIframeSize } from "@/composables/useContentScriptIframeSize"
 
-const { showSidebar } = useSidebar()
+const { isShowSidebar } = useSidebar()
 const { contentScriptIframeSize } = useContentScriptIframeSize();  
 
 const src = chrome.runtime.getURL("src/ui/content-script-iframe/index.html")
@@ -15,10 +15,10 @@ iframe.src = src
 if (iframe) {
   document.body?.append(iframe)
 
-  iframe.style.display = showSidebar.value ? "flex" : "none"
+  iframe.style.display = isShowSidebar.value ? "flex" : "none"
 
   watchEffect(() => {
-    iframe.style.display = showSidebar.value ? "flex" : "none"
+    iframe.style.display = isShowSidebar.value ? "flex" : "none"
     iframe.style.width = `${contentScriptIframeSize.value.width}px`;
     iframe.style.height = `${contentScriptIframeSize.value.height}px`;
   })

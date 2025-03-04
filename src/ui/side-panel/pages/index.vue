@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Side Panel Playground</h1>
-    <TestComponent />
+    <h1>Відповіді</h1>
+    <AnswersBlock />
   </div>
 </template>
 

@@ -12,16 +12,13 @@ const [major, minor, patch, label = "0"] = version
 
 export default {
   author: {
-    email: "mubaidr@gmail.com",
+    email: "volodymyr.nakonechnyi28@gmail.com",
   },
   name: env.mode === "staging" ? `[INTERNAL] ${name}` : displayName || name,
   description,
-  // up to four numbers separated by dots
   version: `${major}.${minor}.${patch}.${label}`,
-  // semver is OK in "version_name"
   version_name: version,
   manifest_version: 3,
-  // key: '',
   action: {
     default_popup: "src/ui/action-popup/index.html",
   },
@@ -31,14 +28,20 @@ export default {
   },
   content_scripts: [
     {
-      all_frames: false,
+      all_frames: true,
       js: ["src/content-script/index.ts"],
       matches: ["*://*/*"],
       run_at: "document_end",
     },
     {
-      all_frames: false,
+      all_frames: true,
       js: ["src/text-highlight-script/index.ts"],
+      matches: ["*://*/*"],
+      run_at: "document_end",
+    },
+    {
+      all_frames: true,
+      js: ["src/content-style-nure-script/index.ts"],
       matches: ["*://*/*"],
       run_at: "document_end",
     }
@@ -46,12 +49,29 @@ export default {
   side_panel: {
     default_path: "src/ui/side-panel/index.html",
   },
-  devtools_page: "src/devtools/index.html",
   options_page: "src/ui/options-page/index.html",
   offline_enabled: true,
-  host_permissions: [],
-  permissions: ["storage", "tabs", "background", "sidePanel"],
-  web_accessible_resources: [],
+  host_permissions: ["https://dl.nure.ua/*"],
+  permissions: [
+    "storage", 
+    "tabs", 
+    "background", 
+    "sidePanel",
+    "webNavigation",
+  ],
+
+  web_accessible_resources: [
+    {
+      resources: ["*"],
+      matches: ["*://*/*"]
+    }
+  ],
+  sandbox: {
+    pages: ["src/ui/side-panel/index.html"]
+  },
+  content_security_policy: {
+    extension_pages: "script-src 'self'; object-src 'self'; frame-src 'self';"
+  },
   icons: {
     16: "src/assets/logo.png",
     24: "src/assets/logo.png",

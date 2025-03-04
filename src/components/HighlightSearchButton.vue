@@ -1,32 +1,9 @@
-<template>
-    <div
-      v-if="isVisible"
-      class="highlight-search-button"
-      @click="handleButtonClick"
-      :style="buttonStyle"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-    </div>
-  </template>
-  
-  <script setup>
+<script setup>
   import { ref, onMounted, onUnmounted } from 'vue';
   import { useAnswerStore } from '@/stores/answer.store';
   import { searchQuestion } from '@/services/api/answers.api';
-  
+  import { Icon } from '@iconify/vue/dist/iconify.js';
+
   const answerStore = useAnswerStore();
   const isVisible = ref(false);
   const selectedText = ref('');
@@ -85,3 +62,14 @@
     z-index: 999999;
   }
   </style>
+
+<template>
+  <div
+    v-if="isVisible"
+    class="highlight-search-button"
+    @click="handleButtonClick"
+    :style="buttonStyle"
+  >
+    <Icon icon="ph:eye" width="20" />
+  </div>
+</template>

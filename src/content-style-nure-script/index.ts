@@ -1,14 +1,15 @@
+import { useStyles } from "@/composables/useStyles"
+
+const { styles } = useStyles()
+
 function applyCustomStyles() {
-    // Track if styles are currently being applied
-    let isApplyingStyles = false
-  
-    // Store reference to style element
+    const { styles } = useStyles()
     let styleElement = null
+    let observer = null
   
     function createStyles() {
-      if (styleElement) {
-        return
-      }
+      if (styleElement) return
+
       const styleOverrides = document.createElement('style')
       styleOverrides.id = 'critical-style-overrides'
       styleOverrides.textContent = `
@@ -481,102 +482,65 @@ function applyCustomStyles() {
           border-right: 1px solid #485465 !important;
         }
           `
-      document.head.appendChild(styleOverrides)
-      styleElement = styleOverrides
+          document.head.appendChild(styleOverrides)
+          styleElement = styleOverrides
     }
   
-    // Optimized observer
-    let observer
     function setupObserver() {
-      if (observer) {
-        observer.disconnect()
-      }
-  
+      if (!styles.value) return
+
+      observer?.disconnect()
       observer = new MutationObserver((mutations) => {
-        let shouldUpdate = false
-  
-        for (const mutation of mutations) {
-          if (
-            (mutation.type === 'attributes' && mutation.attributeName === 'class') ||
-            (mutation.type === 'childList' && mutation.addedNodes.length > 0)
-          ) {
-            shouldUpdate = true
-            break
+          const shouldUpdate = mutations.some(mutation => 
+              (mutation.type === 'attributes' && mutation.attributeName === 'class') ||
+              (mutation.type === 'childList' && mutation.addedNodes.length > 0)
+          )
+
+          if (shouldUpdate) {
+              removeBackgroundWhite()
           }
-        }
-  
-        if (shouldUpdate) {
-          removeBackgroundWhite()
-        }
       })
-  
+
       observer.observe(document.body, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['class'],
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['class']
       })
-    }
-  
-    function cleanup() {
-      if (observer) {
-        observer.disconnect()
-      }
-      if (styleElement) {
-        styleElement.remove()
-        styleElement = null
-      }
-    }
-  
-    function init() {
+  }
+
+  function cleanup() {
+      observer?.disconnect()
+      styleElement?.remove()
+      styleElement = null
+  }
+
+  function init() {
+      if (!styles.value) return
+
       cleanup()
       createStyles()
       setupObserver()
-  
+
       const elementsToRemove = ['#site-news-forum', '.supportemail', '.btn-footer-popover']
-  
-      elementsToRemove.forEach((selector) => {
-        const element = document.querySelector(selector)
-        if (element) element.remove()
+      elementsToRemove.forEach(selector => {
+          const element = document.querySelector(selector)
+          if (element) element.remove()
       })
-    }
-  
-    init()
-  
-    if (document.readyState === 'loading') {
-      window.addEventListener('DOMContentLoaded', init)
-    }
-  
-    return cleanup
   }
-  
-  let cleanup = null
-  
-  chrome.runtime.onMessage.addListener((message) => {
-    if (message.type === 'TOGGLE_EXPERIMENTAL_STYLES') {
-      if (message.enabled) {
-        cleanup = applyCustomStyles()
-      } else {
-        if (cleanup) {
-          cleanup()
-          cleanup = null
-        }
-      }
-    }
-  })
-  
-  chrome.storage.sync.get(['toggleStates'], (result) => {
-    if (!result.toggleStates || result.toggleStates?.experimentalStyles !== false) {
-      cleanup = applyCustomStyles()
-  
-      if (!result.toggleStates) {
-        chrome.storage.sync.set({
-          toggleStates: {
-            experimentalStyles: true,
-            betaAI: false,
-            darkMode: false,
-          },
-        })
-      }
-    }
-  })
+
+  // Реактивне спостереження за змінами styles
+  watch(styles, (newValue) => {
+      newValue ? init() : cleanup()
+  }, { immediate: true })
+
+  // Підтримка завантаження після DOM
+  if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', init)
+  }
+
+  // Повертаємо функцію очищення
+  return cleanup
+}
+
+applyCustomStyles()

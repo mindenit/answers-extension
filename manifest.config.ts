@@ -44,7 +44,7 @@ export default {
     },
     {
       all_frames: false,
-      js: ["src/content-style-nure-script/index.js"],
+      js: ["src/content-style-nure-script/index.ts"],
       matches: ["*://*/*"],
       run_at: "document_end",
     }

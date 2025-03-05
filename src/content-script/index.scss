@@ -1,21 +1,12 @@
-.crx-container {
-  width: 420px;
-  min-height: 340px;
-  position: fixed; /* Додано для переміщення */
-  display: flex;
-  flex-direction: column;
-}
-
 .crx-iframe {
-  cursor: move;
   border: none;
   border-radius: 8px;
   box-shadow:
     0 2px 4px rgba(0, 0, 0, 0.2),
     0 -1px 0px rgba(0, 0, 0, 0.02);
-  background-color: #fff;
+  background-color: hwb(227 7% 84%);
   margin: 2em;
-  padding: 2px;
+  padding-top: 0.5rem;
   position: fixed;
   z-index: 1000;
   bottom: 0;
@@ -40,17 +31,21 @@
   z-index: 1001;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   font-size: 24px;
-}
 
-.crx-toggle-button:hover {
-  background-color: #0056b3;
+  &:hover {
+    background-color: #0056b3;
+  }
 }
 
 .draggable {
-  padding: 10px;
-  height: 20px;
   cursor: move;
-  z-index: 10;
-  background-color: #0056b3;
+  width: 100px;
+  height: 100px;
   color: #fff;
+  text-align: center;
+  line-height: 100px;
+
+  &.dragging {
+    cursor: grabbing;
+  }
 }

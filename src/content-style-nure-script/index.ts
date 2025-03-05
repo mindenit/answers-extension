@@ -495,10 +495,6 @@ function applyCustomStyles() {
               (mutation.type === 'attributes' && mutation.attributeName === 'class') ||
               (mutation.type === 'childList' && mutation.addedNodes.length > 0)
           )
-
-          if (shouldUpdate) {
-              removeBackgroundWhite()
-          }
       })
 
       observer.observe(document.body, {

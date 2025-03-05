@@ -2,7 +2,7 @@
 import { Icon } from '@iconify/vue'
 import { useSidebar } from '@/composables/useSidebar'
 
-const { showSidebar, toggleSidebar } = useSidebar()
+const { isShowSidebar, toggleSidebar } = useSidebar()
 </script>
 
 <template>
@@ -11,7 +11,7 @@ const { showSidebar, toggleSidebar } = useSidebar()
     class="transition-colors"
   >
     <Icon
-      :icon="showSidebar ? 'ph:sidebar-simple-fill' : 'ph:sidebar-simple'"
+      :icon="isShowSidebar ? 'ph:sidebar-simple-fill' : 'ph:sidebar-simple'"
       class="w-5 h-5"
     />
   </button>

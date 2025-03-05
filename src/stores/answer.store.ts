@@ -7,10 +7,11 @@ export interface Answers {
 }
 
 export const useAnswerStore = defineStore("answers", () => {
-    const { data: answers  } = useSearchQuestion()
+    const { data: question  } = useSearchQuestion()
+    const { data: answers } = useFetchAnswers()
 
-    
     return {
+        question,
         answers
     };
 })

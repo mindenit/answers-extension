@@ -50,6 +50,7 @@ const sidebar = useSidebar();
 
   button.addEventListener('click', async () => {
     if (selectedText) {
+      console.log(selectedText)
       searchQuestion.setQuestion(selectedText)
       sidebar.showSidebar()
     }

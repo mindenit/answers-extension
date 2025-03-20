@@ -174,6 +174,10 @@ export default defineConfig({
     sourcemap: false,
     write: true,
     rollupOptions: {
+      output: {
+        // Уникаємо inline-скриптів у продакшені
+        inlineDynamicImports: false,
+      },
       // ui or pages that are not specified in manifest file need to be specified here
       // Хай просто буде, мене вже воно заїбало
       input: {

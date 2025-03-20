@@ -13,7 +13,7 @@ import { Heading, Text, Link } from '@mindenit/ui';
         Ми — <Link class="no-underline text-primary" href="https://mindenit.org/" :as-child="false">Mindenit</Link>, команда ентузіастів-студентів, яка займається створенням сучасних технологічних рішень для студентів. Наша мета — покращити та полегшити студентське життя завдяки сайтам, ботам та додаткам.
       </Text>
 
-      <Text size="large">Дякуємо за Ваш вибір і проявлену довіру! Рома, Максим, Дядя Коля, Богдан і Ліза Вам привіт! Люблю вас)</Text>
+      <Text size="large">Дякуємо за Ваш вибір і проявлену довіру!</Text>
 
       <div class="flex justify-center gap-4 flex-wrap px-10">
         <RouterLink

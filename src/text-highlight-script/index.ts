@@ -3,7 +3,6 @@ import { useSidebar } from "@/composables/useSidebar";
 
 const searchQuestion = useSearchQuestion();
 const sidebar = useSidebar();
-(() => {
   const createButton = () => {
     const button = document.createElement('div');
     button.className = 'highlight-search-button';
@@ -33,9 +32,12 @@ const sidebar = useSidebar();
     const selection = window.getSelection();
     
     if(selection) {
-      selectedText = selection.toString().trim();
+      const currentSelection = selection.toString().trim();
       
-      if (selectedText && selection.rangeCount > 0) {
+      if (currentSelection && selection.rangeCount > 0) {
+        // Update the stored selection immediately when user selects text
+        selectedText = currentSelection;
+        
         const range = selection.getRangeAt(0);
         const rect = range.getBoundingClientRect();
         
@@ -47,12 +49,11 @@ const sidebar = useSidebar();
       }
     }
   });
-
+  
   button.addEventListener('click', async () => {
+    console.log("Selection text:", selectedText);
     if (selectedText) {
-      console.log(selectedText)
-      searchQuestion.setQuestion(selectedText)
-      sidebar.showSidebar()
+      searchQuestion.setQuestion(selectedText);
+      sidebar.showSidebar();
     }
   });
-})();

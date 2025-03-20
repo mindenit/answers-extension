@@ -51,7 +51,7 @@ export default {
   },
   options_page: "src/ui/options-page/index.html",
   offline_enabled: true,
-  host_permissions: ["https://dl.nure.ua/*"],
+  host_permissions: [env.mode === "staging" ? "" : "https://dl.nure.ua/*"],
   permissions: [
     "storage", 
     "tabs", 

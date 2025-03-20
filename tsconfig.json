@@ -34,7 +34,7 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue"
-  ]
+, "src/content-style-nure-script/index.js", "src/content-style-nure-script/index.js"  ]
   // "references": [
   //   {
   //     "path": "./tsconfig.node.json"

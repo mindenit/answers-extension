@@ -30,19 +30,19 @@ export default {
     {
       all_frames: true,
       js: ["src/content-script/index.ts"],
-      matches: ["*://*/*"],
+      matches: ["https://dl.nure.ua/*"],
       run_at: "document_end",
     },
     {
       all_frames: true,
       js: ["src/text-highlight-script/index.ts"],
-      matches: ["*://*/*"],
+      matches: ["https://dl.nure.ua/*"],
       run_at: "document_end",
     },
     {
       all_frames: true,
       js: ["src/content-style-nure-script/index.ts"],
-      matches: ["*://*/*"],
+      matches: ["https://dl.nure.ua/*"],
       run_at: "document_end",
     }
   ],
@@ -63,7 +63,7 @@ export default {
   web_accessible_resources: [
     {
       resources: ["*"],
-      matches: ["*://*/*"]
+      matches: ["https://dl.nure.ua/*"]
     }
   ],
   sandbox: {
